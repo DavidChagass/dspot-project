@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Feature\\Auth\\AuthenticationTest::test_login_screen_can_be_rendered":8},"times":{"Tests\\Feature\\Auth\\AuthenticationTest::test_login_screen_can_be_rendered":3.312}}
