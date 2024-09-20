@@ -8,6 +8,6 @@ class FuncionarioDashboard extends Component
 {
     public function render()
     {
-        return view('livewire.funcionario-dashboard');
+        return view('funcionario-dashboard');
     }
 }

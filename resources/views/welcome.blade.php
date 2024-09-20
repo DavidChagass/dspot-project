@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>OLA</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -24,6 +24,9 @@
                         </div>
                         @if (Route::has('login'))
                             <livewire:welcome.navigation />
+                        @endif
+                        @if (Route::has('login.funcionario'))
+                            <a href="/resources/views/livewire/pages/auth/funcionario-login.blade.php">AAAAAAAAA</a>
                         @endif
                     </header>
 

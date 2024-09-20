@@ -17,6 +17,12 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 Route::get('/funcionario/login', FuncionarioLogin::class)->name('login.funcionario')->middleware('guest:funcionario');
-Route::middleware('guest:funcionario')->group(function () {
-    Route::get('/funcionario/login', FuncionarioLogin::class)->name('login.funcionario');
+Route::middleware(['auth:funcionario'])->group(function () {
+    Route::get('/funcionario/dashboard', FuncionarioDashboard::class)->name('dashboard.funcionario');
 });
+
+
+Route::get('/funcionario/logout', function () {
+    Auth::guard('funcionario')->logout();
+    return redirect()->route('login.funcionario');
+})->name('logout.funcionario');

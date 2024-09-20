@@ -16,7 +16,7 @@
 
         <!-- password -->
         <div>
-            <label for="password">Senha</label>
+            <label for="password">Password</label>
             <input type="password" id="password" wire:model="password" required>
         </div>
 
