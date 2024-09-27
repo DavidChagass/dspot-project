@@ -21,7 +21,7 @@
 
 
         <!-- botao -->
-        <button class="col-span-2" type="submit" style="background: green">Login</button>
+        <button class="col-start-1 col-span-2" type="submit" style="background: green">Login</button>
 
         <!-- erro ai pra ti -->
         @if (session()->has('error'))
