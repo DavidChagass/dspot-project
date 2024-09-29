@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Livewire\FuncionarioLogin;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -9,8 +8,8 @@ Route::middleware('guest')->group(function () {
     Volt::route('register', 'pages.auth.register')
         ->name('register');
 
-    Volt::route('login', 'pages.auth.login')
-        ->name('login');
+    Volt::route('funcionario-login', 'pages.auth.funcionario-login')
+        ->name('funcionario-login');
 
     Volt::route('forgot-password', 'pages.auth.forgot-password')
         ->name('password.request');
@@ -29,7 +28,9 @@ Route::middleware('auth')->group(function () {
 
     Volt::route('confirm-password', 'pages.auth.confirm-password')
         ->name('password.confirm');
-});/*
+});
+
+/*
 Route::middleware(['auth:funcionario'])->group(function () {
 Route::get('/funcionario/login', FuncionarioLogin::class)->name('login.funcionario');
 });

@@ -11,12 +11,14 @@ class funcionarios extends Authenticatable
     protected $fillable = [
         'empresa_id',
         'nome',
-        'password',
         'email',
         'telefone',
+        'password',
+
+
     ];
     protected $hidden = ['password', 'remember_token'];
-
+//    protected $confirm = ['passwordconfirm'];
 
     public function empresas()
     {

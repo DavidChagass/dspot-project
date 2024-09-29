@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Pages\Auth;
 
 use App\Models\empresas;
 use App\Models\funcionarios;
@@ -38,7 +38,7 @@ class FuncionarioLogin extends Component
         }
 
         if (Auth::guard('funcionario')->attempt(['email' => $this->email, 'password' => $this->password,])) {
-            return redirect()->route('dashboard.funcionario');
+            return redirect()->route('funcionario-dashboard');
         }
 
         session()->flash('error', 'erro credenciais');
