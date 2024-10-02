@@ -13,12 +13,13 @@ class funcionarios extends Authenticatable
         'nome',
         'email',
         'telefone',
-        'password',
-
-
+        'password'
     ];
-    protected $hidden = ['password', 'remember_token'];
-//    protected $confirm = ['passwordconfirm'];
+    protected $hidden = [
+        'password',
+        'remember_token'
+    ];
+    //    protected $confirm = ['passwordconfirm'];
 
     public function empresas()
     {

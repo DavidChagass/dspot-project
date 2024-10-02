@@ -27,12 +27,6 @@ class FuncionarioRegister extends Component
         'passwordconfirm' => 'required|string|min:8|same:password'//confirmaçao de senha necessaria para o registro
     ];
 
-    //emitindo um evento
-    public function emit($event, $payload = [])
-    {
-        $this->dispatch($event, $payload);
-    }
-
     public function register()
     {
         //verifica se o campo de telefone esta vazio e exibe erro

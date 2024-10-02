@@ -60,9 +60,4 @@ class FuncionarioLogin extends Component
         //renderiza a view de login do funcionario e utiliza de um layout para o login
         return view('livewire.pages.auth.funcionario-login')->layout('layouts.auth-layout');
     }
-
-
-
-
-
 }
