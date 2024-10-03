@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Pages\Auth;
 
 use App\Models\empresas;
 use App\Models\gerentes;
@@ -11,31 +11,40 @@ class GerenteLogin extends Component
 {
 
     public $email, $password, $dominio;
-    public function login(){
+
+    public function login()
+    {
+
         $this->validate([
             'email' => 'required|email',
-            'password'=> 'required|',
+            'password' => 'required|',
             'dominio' => 'required'
         ]);
 
         $empresa = empresas::where('dominio', $this->dominio)->first();
-        if(!$empresa){
+        if (!$empresa) {
             session()->flash('error', 'dominio invalido');
             return;
         }
 
         $gerente = gerentes::where('email', $this->email)
-        ->where('empresaid', $empresa->id)
-        ->first();
+            ->where('empresa_id', $empresa->id)
+            ->first();
 
 
-        if(!$gerente){
+        if (!$gerente) {
             session()->flash('error', 'gerente nao existe');
             return;
         }
 
-        if(Auth::guard('gerente')->attempt(['email' => $this->email, 'password' => $this->password])){
-
+        if (
+            Auth::guard('gerente')->attempt(
+                [
+                    'email' => $this->email,
+                    'password' => $this->password
+                ]
+            )
+        ) {
             return redirect()->route('gerente-dashboard');
         }
 
@@ -47,6 +56,6 @@ class GerenteLogin extends Component
 
     public function render()
     {
-        return view('livewire.gerente-login')->layouts('layouts.auth-layout');
+        return view('livewire.pages.auth.gerente-login')->layout('layouts.auth-layout');
     }
 }

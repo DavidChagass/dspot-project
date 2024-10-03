@@ -47,6 +47,15 @@ return [
             'provider' => 'funcionarios',
         ],
 
+        'empresa' => [
+            'driver' => 'session',
+            'provider' => 'empresas',
+        ],
+        'gerente' => [
+            'driver' => 'session',
+            'provider' => 'gerentes',
+        ],
+
     ],
 
     /*
@@ -82,6 +91,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\funcionarios::class,
         ],
+
+        'gerentes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\gerentes::class,
+        ],
+
+
+        'empresas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\empresas::class,
+        ],
+
     ],
 
     /*

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('produto');
             $table->string('detalhes');
             $table->boolean('perecivel');
-            $table->interger('quantidadeAtual');
+            $table->integer('quantidadeAtual');
             $table->integer('quantidadeTotal');
             $table->double('precoCompra');
             $table->double('precoVenda');

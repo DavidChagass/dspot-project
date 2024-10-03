@@ -8,6 +8,6 @@ class EmpresaDashboard extends Component
 {
     public function render()
     {
-        return view('livewire.empresa-dashboard');
+        return view('empresa-dashboard')->layout('layouts.app');
     }
 }

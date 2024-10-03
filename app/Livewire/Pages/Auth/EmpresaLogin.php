@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Pages\Auth;
 
 use App\Models\empresas;
 use Auth;
@@ -8,14 +8,14 @@ use Livewire\Component;
 
 class EmpresaLogin extends Component
 {
-//DOMINIO EMAIL PASSWORD
+
 public $dominio,$email,$password;
   public function login()
   {
     $this->validate([
         'email' => 'required|email',
-        'password'=> 'required|',
-        'dominio' => 'required'
+        'password'=> 'required|string|min:8',
+        'dominio' => 'required|string|max:10',
     ]);
 
 
@@ -39,6 +39,6 @@ public $dominio,$email,$password;
   }
     public function render()
     {
-        return view('livewire.empresa-login');
+        return view('livewire.pages.auth.empresa-login')->layout('layouts.auth-layout');
     }
 }

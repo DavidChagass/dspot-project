@@ -8,6 +8,6 @@ class GerenteDashboard extends Component
 {
     public function render()
     {
-        return view('livewire.gerente-dashboard');
+        return view('gerente-dashboard')->layout('layouts.app');
     }
 }

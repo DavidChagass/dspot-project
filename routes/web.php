@@ -1,7 +1,12 @@
 <?php
 
+use App\Livewire\EmpresaDashboard;
 use App\Livewire\FuncionarioDashboard;
-use App\Livewire\GerenteLogin;
+use App\Livewire\GerenteDashboard;
+use App\Livewire\Pages\Auth\EmpresaLogin;
+use App\Livewire\Pages\Auth\EmpresaRegister;
+use App\Livewire\Pages\Auth\GerenteLogin;
+use App\Livewire\Pages\Auth\GerenteRegister;
 use App\Livewire\Pages\Auth\FuncionarioLogin;
 use App\Livewire\Pages\Auth\FuncionarioRegister;
 use Illuminate\Support\Facades\Route;
@@ -43,8 +48,9 @@ Route::group(['middleware' => 'guest'], function () {
 // rotas de gerente
 Route::get('/gerente/login', GerenteLogin::class)->name('login.gerente')->middleware('guest:gerente');
 
+
 Route::middleware(['auth:gerente'])->group(function () {
-    Route::get('/gerente/dashboard', FuncionarioDashboard::class)->name('gerente-dashboard');
+    Route::get('/gerente/dashboard', GerenteDashboard::class)->name('gerente-dashboard');
 });
 
 Route::get('/gerente/logout', function () {
@@ -54,6 +60,25 @@ Route::get('/gerente/logout', function () {
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/gerente/login', GerenteLogin::class)->name('login.gerente');
-    Route::get('/gerente/register', FuncionarioRegister::class)->name('gerente.register');
+    Route::get('/gerente/register', GerenteRegister::class)->name('gerente.register');
 });
 
+
+
+// rotas de empresa
+Route::get('/empresas/login', EmpresaLogin::class)->name('login.empresa')->middleware('guest:empresa');
+
+
+Route::middleware(['auth:empresa'])->group(function () {
+    Route::get('/empresas/dashboard', EmpresaDashboard::class)->name('empresa-dashboard');
+});
+
+route::get('/empresas/logout', function () {
+    Auth::guard('empresa')->logout();
+    return redirect()->route('login.empresa');
+})->name('logout.empresa');
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/empresas/login', EmpresaLogin::class)->name('login.empresa');
+    Route::get('/empresas/register', EmpresaRegister::class)->name('empresas.register');
+});

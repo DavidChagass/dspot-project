@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Pages\Auth;
 
 use App\Models\empresas;
 use App\Models\gerentes;
@@ -32,7 +32,7 @@ class GerenteRegister extends Component
        $empresa = empresas::findOrFail($this->empresaid);
 
         $gerente = gerentes::create([
-            'empresaid' => $this->empresaid,
+            'empresa_id' => $this->empresaid,
             'nome' => $this->nome,
             'email' => $this->email,
             'telefone' => $this->telefone,
@@ -46,10 +46,8 @@ class GerenteRegister extends Component
 
     }
 
-
-
     public function render()
     {
-        return view('livewire.gerente-register')->layout('layouts.auth-layout');
+        return view('livewire.pages.auth.gerente-register')->layout('layouts.auth-layout');
     }
 }

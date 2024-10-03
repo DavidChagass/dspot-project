@@ -16,13 +16,13 @@ class FuncionarioLogin extends Component
     public function login()
     {
 
-
         //regras para o login
         $this->validate([
             'email' => 'required|email',
             'password' => 'required',
             'dominio' => 'required',
         ]);
+
         //procura de dominio
         $empresa = empresas::where('dominio', $this->dominio)->first();
 
@@ -32,19 +32,25 @@ class FuncionarioLogin extends Component
             return;
         }
 
-
         //procura de funcionario utilizando email e o id da empresa mostrando somente o primeiro
         $funcionario = funcionarios::where('email', $this->email)
             ->where('empresa_id', $empresa->id)
             ->first();
 
-            //se nao existir o funcionario retorna erro
+        //se nao existir o funcionario retorna erro
         if (!$funcionario) {
             session()->flash('error', 'funcionario nao existe');
             return;
         }
         //autentica o funcionario usando o email e senha e retorna para a rota de dashboard
-        if (Auth::guard('funcionario')->attempt(['email' => $this->email, 'password' => $this->password,])) {
+        if (
+            Auth::guard('funcionario')->attempt(
+                [
+                    'email' => $this->email,
+                    'password' => $this->password,
+                ]
+            )
+        ) {
             return redirect()->route('funcionario-dashboard');
         }
 
