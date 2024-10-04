@@ -37,11 +37,13 @@ class FuncionarioLogin extends Component
             ->where('empresa_id', $empresa->id)
             ->first();
 
+
         //se nao existir o funcionario retorna erro
         if (!$funcionario) {
             session()->flash('error', 'funcionario nao existe');
             return;
         }
+
         //autentica o funcionario usando o email e senha e retorna para a rota de dashboard
         if (
             Auth::guard('funcionario')->attempt(

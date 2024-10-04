@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\estoque;
 use Exception;
-use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
@@ -34,6 +33,7 @@ class FuncionarioController extends Controller
             throw new Exception('Erro ao alterar estoque');
         }
 
+        session()->flash('success', 'estoque alterado');
     }
 
 

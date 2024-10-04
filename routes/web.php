@@ -10,6 +10,9 @@ use App\Livewire\Pages\Auth\GerenteRegister;
 use App\Livewire\Pages\Auth\FuncionarioLogin;
 use App\Livewire\Pages\Auth\FuncionarioRegister;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\GerenteController;
+
 
 Route::view('/', 'welcome');
 
@@ -63,6 +66,17 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/gerente/register', GerenteRegister::class)->name('gerente.register');
 });
 
+// rotas de estoque do gerente
+Route::GET('/gerente/inserir-estoque', [GerenteController::class, 'inserirEstoque'])->name('gerente.inserir-estoque');
+
+
+
+
+
+
+
+
+
 
 
 // rotas de empresa
@@ -82,3 +96,13 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/empresas/login', EmpresaLogin::class)->name('login.empresa');
     Route::get('/empresas/register', EmpresaRegister::class)->name('empresas.register');
 });
+
+
+
+
+
+
+
+
+
+

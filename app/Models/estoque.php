@@ -9,6 +9,13 @@ class estoque extends Model
 {
     use HasFactory;
 
+    protected $table = 'estoque';
+
+    public function getEmpresaIdAttribute()
+    {
+        return $this->gerente->empresa->id;
+    }
+
     protected $fillable = [
         'empresa_id',
         'produto',
