@@ -48,6 +48,9 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 
+
+
+
 // rotas de gerente
 Route::get('/gerente/login', GerenteLogin::class)->name('login.gerente')->middleware('guest:gerente');
 
@@ -74,27 +77,22 @@ Route::GET('/gerente/inserir-estoque', [GerenteController::class, 'inserirEstoqu
 
 
 
-
-
-
-
-
 // rotas de empresa
-Route::get('/empresas/login', EmpresaLogin::class)->name('login.empresa')->middleware('guest:empresa');
+Route::get('/empresa/login', EmpresaLogin::class)->name('login.empresa')->middleware('guest:empresa');
 
 
 Route::middleware(['auth:empresa'])->group(function () {
-    Route::get('/empresas/dashboard', EmpresaDashboard::class)->name('empresa-dashboard');
+    Route::get('/empresa/dashboard', EmpresaDashboard::class)->name('empresa-dashboard');
 });
 
-route::get('/empresas/logout', function () {
+route::get('/empresa/logout', function () {
     Auth::guard('empresa')->logout();
     return redirect()->route('login.empresa');
 })->name('logout.empresa');
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/empresas/login', EmpresaLogin::class)->name('login.empresa');
-    Route::get('/empresas/register', EmpresaRegister::class)->name('empresas.register');
+    Route::get('/empresa/login', EmpresaLogin::class)->name('login.empresa');
+    Route::get('/empresa/register', EmpresaRegister::class)->name('empresa.register');
 });
 
 

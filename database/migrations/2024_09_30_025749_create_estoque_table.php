@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('quantidadeTotal');
             $table->double('precoCompra');
             $table->double('precoVenda');
-            $table->dateTime('dataUltimaModificacao');
             $table->dateTime('dataValidade');
             $table->string('fornecedor');
             $table->timestamps();

@@ -25,18 +25,13 @@ class GerenteController extends Controller
         $estoque->quantidadeTotal = $request->input('quantidadeTotal');
         $estoque->precoCompra = $request->input('precoCompra');
         $estoque->precoVenda = $request->input('precoVenda');
-        $estoque->dataUltimaModificacao = now();
         $estoque->dataValidade = $request->input('dataValidade');
         $estoque->fornecedor = $request->input('fornecedor');
         $estoque->save();
 
         return redirect()->route('gerente-dashboard')->with('success', 'Estoque inserido com sucesso!');
+
     }
-
-
-
-
-
 
 
 }

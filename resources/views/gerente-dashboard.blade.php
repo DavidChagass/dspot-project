@@ -11,7 +11,10 @@
         <input type="text" id="detalhes" name="detalhes"><br><br>
 
         <label for="perecivel">Perecível:</label>
-        <input type="text" id="perecivel" name="perecivel"><br><br>
+        <select name="perecivel" id="perecivel">
+            <option value="Nao">Nao</option>
+            <option value="Sim">Sim</option>
+        </select><br><br>
 
         <label for="quantidadeAtual">Quantidade Atual:</label>
         <input type="number" id="quantidadeAtual" name="quantidadeAtual"><br><br>
@@ -31,11 +34,6 @@
 
         <label for="fornecedor">fornecedor:</label>
         <input type="text" id="fornecedor" name="fornecedor"><br><br>
-
-
-
-
-
 
         <input type="submit" value="Inserir Estoque">
     </form>
