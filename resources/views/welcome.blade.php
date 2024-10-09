@@ -7,6 +7,10 @@
 
     <title>Dspot - Tela inicial</title>
 
+    <!-- Scripts -->
+
+    <script defer src="{{ asset('js/welcome.js') }}"></script>
+
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -32,7 +36,7 @@
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://cdn.discordapp.com/attachments/1211077759346937901/1291584674208153621/Group_4_1.png?ex=6700a176&is=66ff4ff6&hm=310f75124fb20996bf78258549fc2b4349cc395577f40fc4c43617fa4776ba99&" alt="Your Company">
+                        <img class="h-8 w-auto" src="{{ asset('/src/Group 4 (1).png' )}}" alt="Your Company">
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
