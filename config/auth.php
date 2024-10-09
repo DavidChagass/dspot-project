@@ -41,7 +41,6 @@ return [
             'provider' => 'users',
         ],
 
-
         'funcionario' => [
             'driver' => 'session',
             'provider' => 'funcionarios',

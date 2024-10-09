@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('estoque', function (Blueprint $table) {
             $table->id();
-            $table->string('empresa_id');
+            $table->integer('empresa_id');
             $table->string('produto');
             $table->string('detalhes');
             $table->boolean('perecivel');

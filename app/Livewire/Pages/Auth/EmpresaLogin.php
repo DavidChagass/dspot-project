@@ -24,14 +24,7 @@ public $dominio,$email,$password;
         session()->flash('error', 'erro dominio invalido');
         return;
     }
-
-
-    if (!$empresa) {
-        session()->flash('error', 'empresa nao existe');
-        return;
-    }
-
-    if (Auth::guard('empresa')->attempt(['email' => $this->email, 'password' => $this->password,])) {
+    if (Auth::guard('empresa')->attempt(['dominio' => $this->dominio,   'email' => $this->email, 'password' => $this->password,])) {
         return redirect()->route('empresa-dashboard');
     }
     session()->flash('error', 'erro credenciais');

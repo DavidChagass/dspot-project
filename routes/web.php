@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\GerenteAutenticado;
 use App\Livewire\EmpresaDashboard;
 use App\Livewire\FuncionarioDashboard;
 use App\Livewire\GerenteDashboard;
+use App\Livewire\GerenteProductCreate;
 use App\Livewire\Pages\Auth\EmpresaLogin;
 use App\Livewire\Pages\Auth\EmpresaRegister;
 use App\Livewire\Pages\Auth\GerenteLogin;
@@ -70,9 +72,16 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 // rotas de estoque do gerente
-Route::GET('/gerente/inserir-estoque', [GerenteController::class, 'inserirEstoque'])->name('gerente.inserir-estoque');
+//Route::get('/gerente/inserir-estoque', [GerenteController::class, 'inserirEstoque'])->name('gerente.inserir-estoque');
 
 
+
+
+Route::middleware([GerenteAutenticado::class])->group(function () {
+    Route::get('/gerente/inserir-estoque', GerenteProductCreate::class)->name('gerente.inserir-estoque');
+
+    Route::get('/gerente/insertEstoque', [GerenteController::class, 'inserirEstoque'])->name('gerente.insertEstoque');
+});
 
 
 
@@ -82,6 +91,7 @@ Route::get('/empresa/login', EmpresaLogin::class)->name('login.empresa')->middle
 
 
 Route::middleware(['auth:empresa'])->group(function () {
+
     Route::get('/empresa/dashboard', EmpresaDashboard::class)->name('empresa-dashboard');
 });
 

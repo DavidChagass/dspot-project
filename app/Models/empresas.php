@@ -24,6 +24,7 @@ class empresas extends Authenticatable
         return $this->hasMany(funcionarios::class);
     }
 
+
     public function gerentes(){
         return $this->hasMany(gerentes::class);
     }
