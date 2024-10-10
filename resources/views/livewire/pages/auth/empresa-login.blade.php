@@ -3,9 +3,9 @@
     <form class="md:container" wire:submit.prevent="login">
         @csrf
 
-        <div class="border-b border-gray-900/10 pb-12">
+        <div class="pb-12">
             <h2 class="text-lg">Login Empresas</h2>
-
+            <br>
             <div class="grid grid-rows-3 grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Domínio</label>
@@ -28,8 +28,9 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="w-max flex justify-center">
-                <button class="rounded w-20" type="submit" style="background: green">Login</button>
+                <button type="button" type="submit" class="btn btn-success">Entrar</button>
             </div>
             <!-- erro ai pra ti -->
             @if (session()->has('error'))
