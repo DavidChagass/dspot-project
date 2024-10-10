@@ -1,5 +1,5 @@
-// Rota login empresa
+// Dropdown
 
-function LoginEmpresa() {
-    location.href = "{{ url('/empresa/login') }}";
-}
+document.getElementById("").addEventListener("click", function() {
+    var dropdown = document.getElementById("")
+});
