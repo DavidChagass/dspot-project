@@ -14,14 +14,8 @@ function execmascara(){
 }
 
 function dom(v){
-
-    //Remove tudo o que não é dígito
     v=v.replace(/\D/g,"")
-  
-    //Coloca um ponto entre o terceiro e o quarto dígitos
     v=v.replace(/(\d{5})(\d)/,"$1-$2*")
-
-      
    return v
 }
 
