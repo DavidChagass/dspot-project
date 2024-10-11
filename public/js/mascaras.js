@@ -94,3 +94,12 @@ function mascaraMutuario(o,f){
     
     return v
   }
+  
+  function limitarInputCpf(obj) {
+    obj.value = obj.value.substring(0,13);
+    }
+    
+    function limitarInputCnpj(obj) {
+    obj.value = obj.value.substring(0,17);
+    }
+    
