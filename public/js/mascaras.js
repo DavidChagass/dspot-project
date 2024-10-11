@@ -36,4 +36,14 @@ function soNums(e)
 // Forçar inicio com Pessoa fisica CPF
 document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cpf),limitarInputCpf(this)");
 document.getElementById("key").setAttribute("onblur", "");
+// Controle para pegar os valores das opções selecionadas 
+// e aplicar as funções de cada mascara
+function exibeMsg( valor )
+{
+  if(valor == 1){
+    document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cpf),limitarInputCpf(this),Verifica(this)");
 
+  }else if(valor == 2){
+    document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cnpj),limitarInputCnpj(this)");
+  }
+}
