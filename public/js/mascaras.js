@@ -30,3 +30,10 @@ function soNums(e)
 	if (evt <20 || (evt >47 && evt<58)){return true;}
 	return false;
 }
+
+//----------------------------------------------------------------
+
+// Forçar inicio com Pessoa fisica CPF
+document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cpf),limitarInputCpf(this)");
+document.getElementById("key").setAttribute("onblur", "");
+
