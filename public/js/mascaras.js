@@ -47,3 +47,8 @@ function exibeMsg( valor )
     document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cnpj),limitarInputCnpj(this)");
   }
 }
+function mascaraMutuario(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout('execmascara()',1)
+  }
