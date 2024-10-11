@@ -1,49 +1,50 @@
 <?php
 
 namespace App\Livewire\Pages\Auth;
-
 use App\Models\empresas;
 use Exception;
 use Hash;
 use Livewire\Component;
+use App\Models\User;
 
 class EmpresaRegister extends Component
 {
 
-    public $dominio, $nome, $email, $telefone, $password, $passwordconfirm;
+    public $dominio, $nome, $email, $telefone, $password, $password_confirmation;
 
-    protected $rules = [
-        'dominio' => 'required|string|max:10',
-        'nome' => 'required|string|max:250',
-        'email' => 'required|email|max:250',
-        'telefone' => 'required|string|max:250',
-        'password' => 'required|string|min:8|confirmed',
-        'passwordconfirm' => 'required|string|min:8',
-    ];
+        protected $rules = [
+            'dominio' => 'required|string|max:10|unique:empresas',
+            'nome' => 'required|string|max:250',
+            'email' => 'required|email|max:20|unique:users',
+            'telefone' => 'nullable|string|',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required|string|min:8',
+        ];
 
 
     public function register()
     {
-        if(empty($this->dominio)){
-            session()->flash('error', 'O campo dominio é obrigatório');
-            return;
-        }
-
-        $empresa = empresas::create([
-            'dominio' => $this->dominio,
+        $this->validate();
+        $user = User::create([
             'nome' => $this->nome,
             'email' => $this->email,
-            'telefone' => $this->telefone,
-            'password' => Hash::make($this->password)
+            'password' => Hash::make($this->password),
+            'role' => 'empresa',
         ]);
 
-        if (!$empresa) {
-            throw new Exception('Erro ao criar empresa');
-        }
-        session()->flash('sucess', 'Empresa inserida');
-        return redirect()->route('empresa-dashboard');
+        $empresa = empresas::create([
+            'user_id' => $user->id,
+            'dominio' => $this->dominio,
+            'telefone' => $this->telefone ?? null,
+        ]);
 
+
+        dd($empresa);
+        session()->flash('message', 'Empresa registrada com sucesso!');
+        $this->reset();
+        return redirect()->route('login.empresa');
     }
+
 
     public function render()
     {

@@ -21,7 +21,11 @@ class GerenteLogin extends Component
             'dominio' => 'required'
         ]);
 
-        $empresa = empresas::where('dominio', $this->dominio)->first();
+
+
+
+
+$empresa = empresas::where('dominio', $this->dominio)->first();
         if (!$empresa) {
             session()->flash('error', 'dominio invalido');
             return;
@@ -46,7 +50,7 @@ class GerenteLogin extends Component
             )
         ) {
             return redirect()->route('gerente-dashboard');
-        }
+        } 
 
 
         //se o login for invalido retorna o erro

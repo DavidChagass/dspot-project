@@ -9,11 +9,16 @@ class gerentes extends funcionarios
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nome',
-        'email',
-        'password',
-    ];
+    public function empresa()
+    {
+        return $this->belongsTo(empresas::class);
+    }
+
+
+    public function funcionarios()
+    {
+        return $this->hasMany(funcionarios::class);
+    }
 
 
 }

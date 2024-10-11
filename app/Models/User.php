@@ -34,15 +34,15 @@ class User extends Authenticatable
     }
 
 
-public function isFuncionario(){
-    return $this->role == 'funcionario';
-}
+    public function isFuncionario()
+    {
+        return $this->role == 'funcionario';
+    }
 
-public function isGerente(){
-    return $this->role == 'gerente';
-}
-
-
+    public function isGerente()
+    {
+        return $this->role == 'gerente';
+    }
 
     public function empresa()
     {

@@ -19,7 +19,7 @@ class empresas extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class, 'empresa_id');
     }
 
     public function estoque()

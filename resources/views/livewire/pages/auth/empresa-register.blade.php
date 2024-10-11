@@ -1,5 +1,4 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
     <form wire:submit.prevent="register">
         @csrf
 
@@ -35,7 +34,7 @@
 
         <div>
             <label for="telefone">telefone</label>
-            <input type="text" id="telefone" wire:model.defer="telefone" required>
+            <input type="text" id="telefone" wire:model.defer="telefone">
             @error('telefone')
                 <span class="error">{{ $message }}</span>
             @enderror
@@ -50,9 +49,9 @@
         </div>
 
         <div>
-            <label for="passwordconfirm">Confirme a Senha</label>
-            <input type="password" id="passwordconfirm" wire:model="passwordconfirm" required>
-            @error('passwordconfirm')
+            <label for="password_confirmation">Confirme a Senha</label>
+            <input type="password" id="password_confirmation" wire:model="password_confirmation" required>
+            @error('password_confirmation')
                 <span class="error">{{ $message }}</span>
             @enderror
         </div>

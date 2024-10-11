@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class funcionarios extends User
 {
-
     use HasFactory;
+
+    public function empresa(){
+        return $this->belongsTo(Empresas::class);
+    }
+
+
 }
