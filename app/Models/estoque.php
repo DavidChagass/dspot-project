@@ -7,32 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class estoque extends Model
 {
-    use HasFactory;
+        use HasFactory;
+        protected $fillable =['empresa_id'];
 
-    protected $table = 'estoque';
+public function empresa()
+{
+    return $this->belongsTo(Empresas::class);
+}
 
-    public function getEmpresaIdAttribute()
-    {
-        return $this->gerente->empresa->id;
-    }
-
-    protected $fillable = [
-        'empresa_id',
-        'produto',
-        'detalhes',
-        'perecivel',
-        'quantidadeAtual',
-        'quantidadeTotal',
-        'precoCompra',
-        'precoVenda',
-        'dataUltimaModificacao',
-        'dataValidade',
-        'fornecedor',
-    ];
-
-    public function empresas()
-    {
-        return $this->belongsTo(Empresas::class);
-    }
+public function produtos(){
+    return $this->hasMany(Produtos::class);
+}
 
 }

@@ -13,16 +13,7 @@ return new class extends Migration
     {
         Schema::create('estoque', function (Blueprint $table) {
             $table->id();
-            $table->integer('empresa_id');
-            $table->string('produto');
-            $table->string('detalhes');
-            $table->boolean('perecivel');
-            $table->integer('quantidadeAtual');
-            $table->integer('quantidadeTotal');
-            $table->double('precoCompra');
-            $table->double('precoVenda');
-            $table->dateTime('dataValidade');
-            $table->string('fornecedor');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }
