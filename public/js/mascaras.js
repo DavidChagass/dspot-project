@@ -103,3 +103,41 @@ function mascaraMutuario(o,f){
     obj.value = obj.value.substring(0,17);
     }
     
+    // a função principal de validação
+    function validar(obj) { // recebe um objeto
+        var s = (obj.value).replace(/\D/g,'');
+        var tam=(s).length; // removendo os caracteres não numéricos
+        if (!(tam==11 || tam==14)){ // validando o tamanho
+         // tamanho inválido
+            alert("'"+s+"' Não é um CPF ou um CNPJ válido!" );
+        documento.GetElementById("tx").innerHTML = "text";
+            return false;
+        }
+        
+    // se for CPF
+        if (tam==11 ){
+            if (!validaCPF(s)){ // chama a função que valida o CPF
+                alert("'"+s+"' Não é um CPF válido!" ); // se quiser mostrar o erro
+                obj.select();  // se quiser selecionar o campo em questão
+                return false;
+            }
+            alert("'"+s+"' É um CPF válido!" ); // se quiser mostrar que validou		
+            obj.value=maskCPF(s);	// se validou o CPF mascaramos corretamente
+            return true;
+        }
+        
+    // se for CNPJ			
+        if (tam==14){
+            if(!validaCNPJ(s)){ // chama a função que valida o CNPJ
+                alert("'"+s+"' Não é um CNPJ válido!" ); // se quiser mostrar o erro
+                obj.select();	// se quiser selecionar o campo enviado
+                return false;			
+            }
+            alert("'"+s+"' É um CNPJ válido!" ); // se quiser mostrar que validou				
+            obj.value=maskCNPJ(s);	// se validou o CNPJ mascaramos corretamente
+            return true;
+        }
+    }
+    // fim da funcao validar()
+
+    
