@@ -213,4 +213,5 @@ function mascaraMutuario(o,f){
     function maskCNPJ(CNPJ){
         return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
     }
-    
+
+//-------------------------------------------------------------------------
