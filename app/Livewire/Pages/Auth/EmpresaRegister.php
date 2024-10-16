@@ -2,10 +2,9 @@
 
 namespace App\Livewire\Pages\Auth;
 use App\Models\empresas;
-use Exception;
-use Hash;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash as Hash;
 
 class EmpresaRegister extends Component
 {
@@ -39,7 +38,6 @@ class EmpresaRegister extends Component
         ]);
 
 
-        dd($empresa);
         session()->flash('message', 'Empresa registrada com sucesso!');
         $this->reset();
         return redirect()->route('login.empresa');

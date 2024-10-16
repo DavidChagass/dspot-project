@@ -12,9 +12,8 @@ use App\Livewire\Pages\Auth\GerenteRegister;
 use App\Livewire\Pages\Auth\FuncionarioLogin;
 use App\Livewire\Pages\Auth\FuncionarioRegister;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\GerenteController;
-
+use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'welcome');
 

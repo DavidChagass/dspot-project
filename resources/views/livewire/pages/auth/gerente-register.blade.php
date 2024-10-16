@@ -3,9 +3,9 @@
         @csrf
 
         <div>
-            <label for="empresaid">ID da Empresa</label>
-            <input type="text" id="empresaid" wire:model="empresaid" required>
-            @error('empresaid')
+            <label for="empresa_id">ID da Empresa</label>
+            <input type="text" id="empresa_id" wire:model="empresa_id" required>
+            @error('empresa_id')
                 <span class="error">{{ $message }}</span>
             @enderror
         </div>
@@ -27,15 +27,6 @@
             @enderror
         </div>
 
-
-        <div>
-            <label for="telefone">telefone</label>
-            <input type="text" id="telefone" wire:model.defer="telefone" required>
-            @error('telefone')
-                <span class="error">{{ $message }}</span>
-            @enderror
-
-        </div>
         <div>
             <label for="password">Senha</label>
             <input type="password" id="password" wire:model="password" required>
@@ -45,9 +36,9 @@
         </div>
 
         <div>
-            <label for="passwordconfirm">Confirme a Senha</label>
-            <input type="password" id="passwordconfirm" wire:model="passwordconfirm" required>
-            @error('passwordconfirm')
+            <label for="password_confirmation">Confirme a Senha</label>
+            <input type="password" id="password_confirmation" wire:model="password_confirmation" required>
+            @error('password_confirmation')
                 <span class="error">{{ $message }}</span>
             @enderror
         </div>

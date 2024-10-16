@@ -2,47 +2,37 @@
 
 namespace App\Livewire\Pages\Auth;
 
-use App\Models\empresas;
-use App\Models\gerentes;
-use Exception;
-use Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Livewire\Component;
 
 class GerenteRegister extends Component
 {
-    public $empresaid, $nome, $email, $telefone, $password, $passwordconfirm;
+    public $empresa_id, $nome, $email, $telefone, $password, $password_confirmation;
 
     //regras para a validação de gerente
     protected $rules = [
-        'empresaid' => 'required|interger|exists:empresas,id',
+        'empresa_id' => 'required|integer|exists:empresas,id',
         'nome' => 'required|string|max:250',
-        'email' => 'required|string|email|max:250|unique:gerentes,email',
-        'telefone' => 'required|string|max:250',
+        'email' => 'required|string|email|max:250|unique:users,email',
         'password' => 'required|string|min:8|confirmed',
-        'passwordconfirm' => 'required|string|min:8|same:password'
+        'password_confirmation' => 'required|string|min:8'
     ];
 
     public function register()
     {
-        if (empty($this->telefone)) {
-            session()->flash('error', 'O campo telefoneé obrigatório');
-            return;
-        }
-
-       $empresa = empresas::findOrFail($this->empresaid);
-
-        $gerente = gerentes::create([
-            'empresa_id' => $this->empresaid,
+        $this->validate();
+        $user = User::create([
+            'empresa_id' => $this->empresa_id,
             'nome' => $this->nome,
             'email' => $this->email,
-            'telefone' => $this->telefone,
-            'password' => Hash::make($this->password)
+            'password' => FacadesHash::make($this->password),
+            'role' => 'gerente',
         ]);
-        if (!$gerente) {
-            throw new Exception('Erro ao criar gerente');
-        }
-        session()->flash('sucess', 'Gerente inserido');
-        return redirect()->route('gerente-dashboard');
+
+        session()->flash('message', 'Gerente inserido');
+        $this->reset();
+        return redirect()->route('login.gerente');
 
     }
 

@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Auth;
 use App\Models\empresas;
 use App\Models\funcionarios;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Livewire\Component;
 
 class FuncionarioLogin extends Component
@@ -46,7 +47,7 @@ class FuncionarioLogin extends Component
 
         //autentica o funcionario usando o email e senha e retorna para a rota de dashboard
         if (
-            Auth::guard('funcionario')->attempt(
+            FacadesAuth::guard('funcionario')->attempt(
                 [
                     'email' => $this->email,
                     'password' => $this->password,
@@ -66,6 +67,6 @@ class FuncionarioLogin extends Component
     public function render()
     {
         //renderiza a view de login do funcionario e utiliza de um layout para o login
-        return view('livewire.pages.auth.funcionario-login')->layout('layouts.auth-layout');
+        return view('livewire.pages.auth.funcionario-login');
     }
 }
