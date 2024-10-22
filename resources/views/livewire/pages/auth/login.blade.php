@@ -27,8 +27,9 @@
         <span class="error">{{ $message }}</span>
         @enderror
 
-        <select wire:model.lazy="role">
-            <option selected value="funcionario">Funcionário</option>
+        <select required wire:model.lazy="role">
+            <option value="" selected disabled>Selecione seu cargo</option>
+            <option value="funcionario">Funcionário</option>
             <option value="gerente">Gerente</option>
             <option value="empresa">Empresa</option>
         </select>
