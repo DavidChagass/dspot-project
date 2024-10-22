@@ -41,22 +41,22 @@ return [
             'provider' => 'users',
         ],
 
-        'funcionario' => [
-            'driver' => 'session',
-            'provider' => 'funcionarios',
-        ],
 
-        'empresa' => [
-            'driver' => 'session',
-            'provider' => 'empresas',
-        ],
-        'gerente' => [
-            'driver' => 'session',
-            'provider' => 'gerentes',
-        ],
-
+    'funcionario' => [
+        'driver' => 'session',
+        'provider' => 'funcionarios',
     ],
 
+    'empresa' => [
+        'driver' => 'session',
+        'provider' => 'empresas',
+    ],
+    'gerente' => [
+        'driver' => 'session',
+        'provider' => 'gerentes',
+    ],
+
+],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -77,15 +77,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-
+            'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-
         'funcionarios' => [
             'driver' => 'eloquent',
             'model' => App\Models\funcionarios::class,
@@ -95,12 +88,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\gerentes::class,
         ],
-
-
         'empresas' => [
             'driver' => 'eloquent',
             'model' => App\Models\empresas::class,
         ],
+
+
 
     ],
 

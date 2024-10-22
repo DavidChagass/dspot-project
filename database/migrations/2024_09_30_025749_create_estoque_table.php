@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('estoque', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
             $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });

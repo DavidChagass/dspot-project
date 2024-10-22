@@ -30,7 +30,7 @@ class GerenteRegister extends Component
             'role' => 'gerente',
         ]);
 
-        session()->flash('message', 'Gerente inserido');
+        session()->flash('message', 'INSERIMOS O SUJEITO AI RECEBAAAAAA');
         $this->reset();
         return redirect()->route('login.gerente');
 
