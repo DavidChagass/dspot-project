@@ -1,10 +1,10 @@
 <div>
-    <form wire:submit.prevent="login">
+    <form class="flex flex-col" wire:submit.prevent="login">
         @csrf
 
 
 
-        <input type="text" wire:model="dominio" placeholder="dominio">
+        <input type="text" id="dominio" wire:model="dominio" placeholder="dominio">
         @error('dominio')
             <span class="error">{{ $message }}</span>
         @enderror
