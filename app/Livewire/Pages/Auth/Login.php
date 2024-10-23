@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Auth;
 
-use App\Models\empresas;
+use App\Models\empresas; // Mantém o nome como 'empresas'
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class Login extends Component
         ]);
 
         // Verifica se o domínio existe
-        $empresa = empresas::where('dominio', $this->dominio)->first();
+        $empresa = empresas::where('dominio', $this->dominio)->first(); // Mantém o nome do modelo como 'empresas'
         if (!$empresa) {
             session()->flash('error', 'Erro: domínio inválido');
             return;
@@ -59,5 +59,6 @@ class Login extends Component
         return view('livewire.pages.auth.login')->layout('layouts.auth-layout');
     }
 }
+
 
 
