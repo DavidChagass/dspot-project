@@ -8,15 +8,15 @@
 </head>
 <body>
     <header>
-        <!-- Seu cabeçalho aqui -->
+
     </header>
 
     <main>
-        {{ $slot }} <!-- Aqui será injetado o conteúdo do componente -->
+        {{ $slot }}
     </main>
 
     <footer>
-        <!-- Seu rodapé aqui -->
+
     </footer>
 
     @livewireScripts

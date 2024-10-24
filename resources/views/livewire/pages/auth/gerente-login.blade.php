@@ -1,10 +1,12 @@
 <div>
+    {{-- Because she competes with no one, no one can compete with her. --}}
+
 
     <form class="md:container" wire:submit.prevent="login">
         @csrf
 
-        <div class="pb-12">
-            <h2 class="text-lg">Login Funcionários</h2>
+        <div class="border-b border-gray-900/10 pb-12">
+            <h2 class="text-lg">Login Gerentes</h2>
             <br>
             <div class="grid grid-rows-3 grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">

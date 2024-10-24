@@ -1,10 +1,10 @@
 <div>
-
+    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <form class="md:container" wire:submit.prevent="login">
         @csrf
 
         <div class="pb-12">
-            <h2 class="text-lg">Login Funcionários</h2>
+            <h2 class="text-lg">Login Empresas</h2>
             <br>
             <div class="grid grid-rows-3 grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">

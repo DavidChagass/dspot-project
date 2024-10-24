@@ -36,6 +36,12 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'gerente' => [
+            \App\Http\Middleware\GerenteAutenticado::class,
+        ],
+
+
     ];
 
     /**

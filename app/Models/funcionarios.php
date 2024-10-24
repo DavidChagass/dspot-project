@@ -4,23 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-class funcionarios extends Authenticatable
+
+class funcionarios extends User
 {
     use HasFactory;
-    protected $fillable = [
-        'empresa_id',
-        'nome',
-        'password',
-        'email',
-        'telefone',
-    ];
-    protected $hidden = ['password', 'remember_token'];
 
-
-    public function empresas()
-    {
+    public function empresa(){
         return $this->belongsTo(Empresas::class);
     }
+
 
 }
