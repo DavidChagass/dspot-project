@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Auth;
 
-use App\Models\empresas; // Mantém o nome como 'empresas'
+use App\Models\empresas;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class Login extends Component
         ]);
 
         // Verifica se o domínio existe
-        $empresa = empresas::where('dominio', $this->dominio)->first(); // Mantém o nome do modelo como 'empresas'
+        $empresa = empresas::where('dominio', $this->dominio)->first();
         if (!$empresa) {
             session()->flash('error', 'Erro: domínio inválido');
             return;
@@ -36,18 +36,8 @@ class Login extends Component
             // Loga o usuário
             Auth::login($user);
 
-            // Redireciona o usuário baseado no papel (role)
-            switch ($user->role) {
-                case 'gerente':
-                    return redirect()->route('gerente-dashboard');
-                case 'funcionario':
-                    return redirect()->route('funcionario-dashboard');
-                case 'empresa':
-                    return redirect()->route('empresa-dashboard');
-                default:
-                    session()->flash('error', 'Credenciais inválidas.');
-                    return redirect()->route('login');
-            }
+            // Redireciona o usuário para a tela de login após o login bem-sucedido
+            return redirect()->route('login');
         } else {
             // Exibe erro de credenciais inválidas
             session()->flash('error', 'Credenciais inválidas.');
@@ -59,6 +49,7 @@ class Login extends Component
         return view('livewire.pages.auth.login')->layout('layouts.auth-layout');
     }
 }
+
 
 
 
