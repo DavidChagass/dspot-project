@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Pages\Auth\Login;
 
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
