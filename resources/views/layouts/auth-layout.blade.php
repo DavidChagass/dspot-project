@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="">
+<body class="overflow-hidden">
 <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
@@ -48,19 +48,11 @@
             </div>
         </div>
         </div>
-        <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
-                <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
-            </div>
-        </div>
     </nav>
 
     <div class="container container-fluid">
         <div class="flex justify-center min-h-screen">
-            <main class="flex items-center">
+            <main class="flex items-center container-sm justify-center">
                 {{ $slot }}
             </main>
         </div>
