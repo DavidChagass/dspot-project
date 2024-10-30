@@ -40,7 +40,7 @@ class EmpresaRegister extends Component
 
         session()->flash('message', 'Empresa registrada com sucesso!');
         $this->reset();
-        return redirect()->route('login.empresa');
+        return redirect()->route('login'); // login.empresa
     }
 
 
