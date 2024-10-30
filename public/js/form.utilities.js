@@ -14,7 +14,7 @@ function addListeners() {
 }
 
 function togglePassword() {
-    const passwordField = document.querySelector("#password");
+    const passwordField = document.querySelector("#senha");
     const toggleButton = document.querySelector(".toggle-button");
 
     if (!passwordField || !toggleButton) {
