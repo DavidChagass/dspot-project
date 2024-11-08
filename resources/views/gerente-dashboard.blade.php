@@ -22,7 +22,7 @@
 
 
 <div>
-    <!-- Todos os elementos HTML do componente devem estar dentro desse div -->
+
     <h1>Gerente Dashboard</h1>
     <ul>
         @foreach($estoques as $estoque)
@@ -34,7 +34,12 @@
                             {{ $produto->produto }}
                             {{ $produto->detalhes }}
                             {{ $produto->perecivel }}
-                            <!-- ... -->
+                            {{ $produto->quantidadeAtual }}
+                            {{ $produto->quantidadeTotal }}
+                            {{ $produto->precoCompra }}
+                            {{ $produto->precoVenda }}
+                            {{ $produto->dataValidade }}
+                            {{ $produto->fornecedor }}
                         </li>
                     @endforeach
                 </ul>
