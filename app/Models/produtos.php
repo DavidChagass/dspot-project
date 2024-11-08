@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class produtos extends estoque
+class produtos extends Model
 {
     use HasFactory;
 
@@ -26,7 +26,7 @@ class produtos extends estoque
 
     public function estoque()
     {
-        return $this->belongsTo(Estoque::class);
+        return $this->belongsTo(estoque::class, 'estoque_id', 'id');
     }
 
 

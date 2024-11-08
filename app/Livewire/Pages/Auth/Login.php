@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Auth;
 
 use App\Models\empresas;
 use App\Models\User;
+use illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -22,7 +23,16 @@ class Login extends Component
         ]);
 
         // Verifica se o domínio existe
-        $empresa = empresas::where('dominio', $this->dominio)->first();
+
+        /*         $empresa = empresas::where('dominio', $this->dominio)->first();
+        if (!$empresa) {
+            session()->flash('error', 'Erro: domínio inválido');
+            return;
+        }
+ */
+
+        $dominio = $this->dominio;
+        $empresa = optional(empresas::where('dominio', $dominio)->first())->id;
         if (!$empresa) {
             session()->flash('error', 'Erro: domínio inválido');
             return;

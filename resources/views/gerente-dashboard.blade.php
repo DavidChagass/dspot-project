@@ -1,8 +1,44 @@
+{{-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Gerente Dashboard</title>
+</head>
+<body>
+    <header>
+        <!-- Seu cabeçalho aqui -->
+    </header>
+
+    <main>
+        @yield('content')
+    </main>
+
+    <footer>
+        <!-- Seu rodapé aqui -->
+    </footer>
+</body>
+</html>
+ --}}
+
+
+
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
-    <H1>Seus Produtos</H1>
-    <td>
-        <button onclick="location.href='{{ route('gerente.inserir-estoque') }}'">Check Stock</button>
-    </td>
-    {{ $produto }}
+    <!-- Todos os elementos HTML do componente devem estar dentro desse div -->
+    <h1>Gerente Dashboard</h1>
+    <ul>
+        @foreach($estoques as $estoque)
+            <li>
+                {{ $estoque->nome }}
+                <ul>
+                    @foreach($estoque->produtos as $produto)
+                        <li>
+                            {{ $produto->produto }}
+                            {{ $produto->detalhes }}
+                            {{ $produto->perecivel }}
+                            <!-- ... -->
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
+        @endforeach
+    </ul>
 </div>
