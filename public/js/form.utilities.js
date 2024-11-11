@@ -11,3 +11,7 @@ document.getElementsByClassName("toggle-button")[0].addEventListener("click", fu
     }
 
 });
+
+document.getElementById("voltarBtn").addEventListener("click", function() {
+    history.back();
+});
