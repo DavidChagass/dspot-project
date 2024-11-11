@@ -18,7 +18,6 @@ class produtos extends Model
         'quantidadeTotal',
         'precoCompra',
         'precoVenda',
-        'dataUltimaModificacao',
         'dataValidade',
         'fornecedor',
     ];
