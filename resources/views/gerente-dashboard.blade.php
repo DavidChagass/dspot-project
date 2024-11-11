@@ -1,25 +1,3 @@
-{{-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Gerente Dashboard</title>
-</head>
-<body>
-    <header>
-        <!-- Seu cabeçalho aqui -->
-    </header>
-
-    <main>
-        @yield('content')
-    </main>
-
-    <footer>
-        <!-- Seu rodapé aqui -->
-    </footer>
-</body>
-</html>
- --}}
-
-
 
 <div>
     <!-- Todos os elementos HTML do componente devem estar dentro desse div -->
@@ -30,14 +8,17 @@
                 {{ $estoque->nome }}
                 <ul>
                     @foreach($estoque->produtos as $produto)
-                        <li>
-                            {{ $produto->produto }}
-                            {{ $produto->detalhes }}
-                            {{ $produto->perecivel }}
-                            <!-- ... -->
-                        </li>
-                    @endforeach
-                </ul>
+                        <li>produto: {{ $produto->produto }}</li>
+                        <li>detalhes: {{$produto->detalhes}}</li>
+                        <li>quantidade Atual: {{$produto->quantidadeAtual}}</li>
+                        <li>quantidade Total: {{$produto->quantidadeTotal}}</li>
+                        <li>perecivel: {{$produto->perecivel}}</li>
+                        <li>data Validade: {{$produto->dataValidade}}</li>
+                        <li>preco Compra: {{$produto->precoCompra}}</li>
+                        <li>preco Venda: {{$produto->precoVenda}}</li>
+                        <li>fornecedor: {{$produto->fornecedor}}</li>
+                        @endforeach
+                    </ul>
             </li>
         @endforeach
     </ul>
