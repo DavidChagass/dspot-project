@@ -71,6 +71,5 @@ Route::get('/empresa/dashboard', EmpresaDashboard::class)->name('empresa-dashboa
 
 
 
-
 Route::get('/gerente/register', GerenteRegister::class)->name('gerente-register');
 Route::get('/funcionario/register', FuncionarioRegister::class)->name('funcionario-register');

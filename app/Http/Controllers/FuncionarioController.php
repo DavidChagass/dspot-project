@@ -15,25 +15,7 @@ class FuncionarioController extends Controller
     public function updateQuantidade()
     {
 
-        $estoque = estoque::findOrFail($this->id);
-        if (!$estoque) {
-            session()->flash('error', 'produto nao existe');
-            return;
-        }
 
-        $addQuantidade = estoque::update([
-            'quantidadeAtual' => $estoque->quantidade + $this->quantidade,
-        ]);
-
-        $removeQuantidade = estoque::update([
-            'quantidadeAtual' => $estoque->quantidade - $this->quantidade,
-        ]);
-
-        if (!$addQuantidade || !$removeQuantidade) {
-            throw new Exception('Erro ao alterar estoque');
-        }
-
-        session()->flash('success', 'estoque alterado');
     }
 
 
