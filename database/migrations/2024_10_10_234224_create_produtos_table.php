@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('estoque_id')->constrained('estoques')->onDelete('cascade');
+            $table->foreignId('estoque_id')->constrained('estoque')->onDelete('cascade');
             $table->string('produto');
             $table->string('detalhes');
             $table->boolean('perecivel');

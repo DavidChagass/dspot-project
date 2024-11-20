@@ -14,7 +14,7 @@ class EmpresaRegister extends Component
         protected $rules = [
             'dominio' => 'required|string|max:10|unique:empresas',
             'nome' => 'required|string|max:250',
-            'email' => 'required|email|max:20|unique:users',
+            'email' => 'required|email|max:250|unique:users',
             'telefone' => 'nullable|string|',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
@@ -40,7 +40,7 @@ class EmpresaRegister extends Component
 
         session()->flash('message', 'Empresa registrada com sucesso!');
         $this->reset();
-        return redirect()->route('login.empresa');
+        return redirect()->route('login'); // login.empresa
     }
 
 

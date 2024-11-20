@@ -1,10 +1,9 @@
 /*Password buttom*/
 
-
 .toggle-button {
-	display: inline-flex;
+	display: flex;
 	position: absolute;
-	top: 73%;
+	top: 50%;
 	transform: translateY(-50%);
 	left: unset;
 	right: 12px;

@@ -1,38 +1,3 @@
-// Mascara de Domínio
-document.getElementById("dominio").setAttribute("onkeypress", "mascaraMutuario(this,dom),limitarInputDom(this)");
-document.getElementById("dominio").setAttribute("onblur", "");
-
-
-function mascaraMutuario(o,f){
-    v_obj=o
-    v_fun=f
-    setTimeout('execmascara()',1)
-}
-
-function execmascara(){
-    v_obj.value=v_fun(v_obj.value)
-}
-
-function dom(v){
-    v=v.replace(/\D/g,"")
-    v=v.replace(/(\d{5})(\d)/,"$1-$2*")
-   return v
-}
-
-function limitarInputDom(obj) {
-    obj.value = obj.value.substring(0,9);
-}
-
-function soNums(e)
-{
-	if (document.all){var evt=event.keyCode;}
-	else{var evt = e.charCode;}
-	if (evt <20 || (evt >47 && evt<58)){return true;}
-	return false;
-}
-
-//----------------------------------------------------------------
-
 // Forçar inicio com Pessoa fisica CPF
 document.getElementById("key").setAttribute("onkeypress", "mascaraMutuario(this,Cpf),limitarInputCpf(this)");
 document.getElementById("key").setAttribute("onblur", "");
@@ -138,12 +103,7 @@ function mascaraMutuario(o,f){
             return true;
         }
     }
-    // fim da funcao validar()
-    
-    // função que valida CPF
-    // O algorítimo de validação de CPF é baseado em cálculos
-    // para o dígito verificador (os dois últimos)
-    // Não entrarei em detalhes de como funciona
+
     function validaCPF(s) {
         var c = s.substr(0,9);
         var dv = s.substr(9,2);
@@ -169,9 +129,6 @@ function mascaraMutuario(o,f){
         return true;
     }
     
-    // Função que valida CNPJ
-    // O algorítimo de validação de CNPJ é baseado em cálculos
-    // para o dígito verificador (os dois últimos)
     function validaCNPJ(CNPJ) {
         var a = new Array();
         var b = new Number;
@@ -193,9 +150,6 @@ function mascaraMutuario(o,f){
     }
     
     
-        // Função que permite apenas teclas numéricas
-        // Deve ser chamada no evento onKeyPress desta forma
-        // return (soNums(event));
     function soNums(e)
     {
         if (document.all){var evt=event.keyCode;}
@@ -204,14 +158,10 @@ function mascaraMutuario(o,f){
         return false;
     }
     
-    //	função que mascara o CPF
     function maskCPF(CPF){
         return CPF.substring(0,3)+"."+CPF.substring(3,6)+"."+CPF.substring(6,9)+"-"+CPF.substring(9,11);
     }
     
-    //	função que mascara o CNPJ
     function maskCNPJ(CNPJ){
         return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
     }
-
-//-------------------------------------------------------------------------
