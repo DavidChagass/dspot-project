@@ -46,8 +46,18 @@ class Login extends Component
             // Loga o usuário
             Auth::login($user);
 
-            // Redireciona o usuário para a tela de login após o login bem-sucedido
-            return redirect()->route('login');
+            // Redireciona o usuário baseado no papel (role)
+            switch ($user->role) {
+                case 'gerente':
+                    return redirect()->route('gerente-dashboard');
+                case 'funcionario':
+                    return redirect()->route('funcionario-dashboard');
+                case 'empresa':
+                    return redirect()->route('empresa-dashboard');
+                default:
+                    session()->flash('error', 'Credenciais inválidas.');
+                    return redirect()->route('login');
+            }
         } else {
             // Exibe erro de credenciais inválidas
             session()->flash('error', 'Credenciais inválidas.');
@@ -59,7 +69,5 @@ class Login extends Component
         return view('livewire.pages.auth.login')->layout('layouts.auth-layout');
     }
 }
-
-
 
 
