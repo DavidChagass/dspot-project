@@ -13,6 +13,7 @@
     <script defer src="{{ asset('js/mascaras/mask.dominio.js') }}"></script>
     <script defer src="{{ asset('js/mascaras/mask.telefone.js') }}"></script>
     <script defer src="{{ asset('js/form.utilities.js') }}"></script>
+    <script defer src="{{ asset('js/historyBack.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

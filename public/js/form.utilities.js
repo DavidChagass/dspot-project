@@ -30,7 +30,3 @@ submitButton.addEventListener("click", function (e) {
     // Enviar o formulário
     form.submit();
 });
-
-document.getElementsByClassName("voltarBtn")[0].addEventListener("click", function() {
-    history.back();
-});
