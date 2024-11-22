@@ -4,30 +4,39 @@ namespace App\Livewire;
 
 use App\Models\Empresas;
 use App\Models\Estoque;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
     public $estoques = [];
     public $view;
+    public $role;
 
     public function mount()
     {
-        $this->determineView();
+        $this->determineRoleAndView();
         $this->mostrarProdutos();
     }
 
     /**
-     * Determina qual view será renderizada (Empresa ou Gerente)
+     * Determina o papel do usuário (role) e a view que será renderizada.
      */
-    public function determineView()
+    public function determineRoleAndView()
     {
         $user = auth('web')->user();
+        $this->role = $user->role;
 
-        if ($user->role === 'gerente') {
-            $this->view = 'livewire.pages.auth.dashboardGerente';
-        } else {
-            $this->view = 'livewire.pages.auth.dashboardEmpresa';
+        switch ($this->role) {
+            case 'gerente':
+                $this->view = 'livewire.pages.auth.dashboardGerente';
+                break;
+            case 'funcionario':
+                $this->view = 'livewire.pages.auth.dashboardFuncionario';
+                break;
+            default:
+                $this->view = 'livewire.pages.auth.dashboardEmpresa';
+                break;
         }
     }
 
@@ -41,7 +50,7 @@ class Dashboard extends Component
 
         $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
 
-        if ($user->role === 'gerente') {
+        if ($this->role === 'gerente') {
             $estoqueQuery->with('produtos'); // Caso seja gerente, incluir os produtos relacionados
         }
 
@@ -52,14 +61,28 @@ class Dashboard extends Component
         }
     }
 
+    public function AlteraQuantidade(Request $quant)
+    {
+    }
+
     public function render()
     {
         return view($this->view, [
             'estoques' => $this->estoques,
         ])->layout('layouts.dashboard', [
-            'title' => $this->view === 'livewire.pages.auth.dashboardGerente'
-                ? 'Dashboard - Gerente'
-                : 'Dashboard - Empresa',
+            'title' => $this->getDashboardTitle(),
         ]);
+    }
+
+    private function getDashboardTitle()
+    {
+        switch ($this->role) {
+            case 'gerente':
+                return 'Dashboard - Gerente';
+            case 'funcionario':
+                return 'Dashboard - Funcionário';
+            default:
+                return 'Dashboard - Empresa';
+        }
     }
 }
