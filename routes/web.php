@@ -40,7 +40,7 @@ Route::middleware(['auth:funcionario'])->group(function () {
         return redirect()->route('login');
     })->name('logout.funcionario');
 });
-Route::get('/funcionario/dashboard', FuncionarioDashboard::class)->name('funcionario-dashboard');
+Route::get('/funcionario/dashboard', Dashboard::class)->name('funcionario-dashboard');
 
 // Rotas para gerente
 /* Route::middleware(['guest:gerente'])->group(function () {
