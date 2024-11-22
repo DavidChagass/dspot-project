@@ -39,7 +39,7 @@ class FuncionarioRegister extends Component
 
         session()->flash('message', 'funcionario inserido');
         $this->reset();
-        return redirect()->route('login.funcionario');
+        return redirect()->route('login');
     }
 
     public function render()
