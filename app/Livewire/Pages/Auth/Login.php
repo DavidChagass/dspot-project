@@ -22,14 +22,8 @@ class Login extends Component
             'dominio' => 'required|string|max:10',
         ]);
 
-        // Verifica se o domínio existe
 
-        /*         $empresa = empresas::where('dominio', $this->dominio)->first();
-        if (!$empresa) {
-            session()->flash('error', 'Erro: domínio inválido');
-            return;
-        }
- */
+       //verifica se o dominio existe
 
         $dominio = $this->dominio;
         $empresa = optional(empresas::where('dominio', $dominio)->first())->id;

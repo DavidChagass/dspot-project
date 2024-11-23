@@ -20,36 +20,7 @@ class GerenteDashboard extends Component
 
 
     }
-    /*
-            $estoque = Estoque::with('empresas')->where('empresa_id', $empresa_id)
-                ->get();
-            // dd($estoque);
-
-            if ($estoque) {
-                foreach ($estoque as $estoqueIndividual) {
-                    $this->produto = Estoque::where('empresa_id', '=', $estoqueIndividual->id)
-                        ->select(
-                            'empresa_id',
-                            'produto',
-                            'quantidade',
-                            'detalhes',
-                            'perecivel',
-                            'quantidadeAtual',
-                            'quantidadeTotal',
-                            'precoCompra',
-                            'precoVenda',
-                            'dataValidade',
-                            'fornecedor'
-                        )
-                        ->get();
-                }
-
-            } else {
-                dd('Nenhum estoque encontrado');
-            } */
-
-
-    //  dd($this->produto);
+   
 
 
     public function mount()

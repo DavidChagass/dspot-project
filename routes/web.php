@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\GerenteController;
+use App\Http\Controllers\ProdutoController;
 use App\Livewire\EmpresaDashboard;
 use App\Livewire\FuncionarioDashboard;
 use App\Livewire\GerenteDashboard;
@@ -73,3 +74,13 @@ Route::get('/empresa/dashboard', EmpresaDashboard::class)->name('empresa-dashboa
 
 Route::get('/gerente/register', GerenteRegister::class)->name('gerente-register');
 Route::get('/funcionario/register', FuncionarioRegister::class)->name('funcionario-register');
+
+
+//rotas de produto
+//Route::get('/produtos', ProdutoController::class)->name('produtos');
+//Route::get('/produtos/create', ProdutoController::class)->name('produtos.create');
+//Route::get('/produtos', 'ProdutoController@insertProduto')->name('produtos.store');
+//Route::get('/produtos', [GerenteController::class, 'produtoCreate'])->name('produtos.store');
+//Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
+Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
+Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');

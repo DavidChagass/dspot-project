@@ -9,7 +9,8 @@
                 {{ $estoque->nome }}
                 <ul>
                     @foreach($estoque->produtos as $produto)
-                    <li>produto: {{ $produto->produto }}</li>
+                    <li></li>
+                   <ul>produto: {{ $produto->produto }}
                     <li>detalhes: {{$produto->detalhes}}</li>
                     <li>quantidade Atual: {{$produto->quantidadeAtual}}</li>
                     <li>quantidade Total: {{$produto->quantidadeTotal}}</li>
@@ -18,6 +19,7 @@
                     <li>preco Compra: {{$produto->precoCompra}}</li>
                     <li>preco Venda: {{$produto->precoVenda}}</li>
                     <li>fornecedor: {{$produto->fornecedor}}</li>
+                   </ul>
                     @endforeach
                 </ul>
             </li>
