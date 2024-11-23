@@ -11,6 +11,7 @@ use App\Livewire\Pages\Auth\FuncionarioRegister;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Pages\Auth\Login;
+use App\Livewire\Dashboard;
 
 
 Route::view('/', 'welcome')->name('welcome');
@@ -40,7 +41,7 @@ Route::middleware(['auth:funcionario'])->group(function () {
         return redirect()->route('login');
     })->name('logout.funcionario');
 });
-Route::get('/funcionario/dashboard', FuncionarioDashboard::class)->name('funcionario-dashboard');
+Route::get('/funcionario/dashboard', Dashboard::class)->name('funcionario-dashboard');
 
 // Rotas para gerente
 /* Route::middleware(['guest:gerente'])->group(function () {
@@ -53,7 +54,7 @@ Route::middleware(['auth:gerente'])->group(function () {
         return redirect()->route('login');
     })->name('logout.gerente');
 });
-Route::get('/gerente/dashboard', GerenteDashboard::class)->name('gerente-dashboard');
+Route::get('/gerente/dashboard', Dashboard::class)->name('gerente-dashboard');
 
 // Rotas para empresa
 Route::middleware(['guest:empresa'])->group(function () {
@@ -66,9 +67,7 @@ Route::middleware(['auth:empresa'])->group(function () {
         return redirect()->route('login');
     })->name('logout.empresa');
 });
-Route::get('/empresa/dashboard', EmpresaDashboard::class)->name('empresa-dashboard');
-
-
+Route::get('/empresa/dashboard', Dashboard::class)->name('empresa-dashboard');
 
 
 

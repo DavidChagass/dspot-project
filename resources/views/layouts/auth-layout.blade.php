@@ -13,6 +13,7 @@
     <script defer src="{{ asset('js/mascaras/mask.dominio.js') }}"></script>
     <script defer src="{{ asset('js/mascaras/mask.telefone.js') }}"></script>
     <script defer src="{{ asset('js/form.utilities.js') }}"></script>
+    <script defer src="{{ asset('js/historyBack.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -29,7 +30,7 @@
                     </div>
                     <div class="sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <button id="voltarBtn" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Voltar</button>
+                            <button class="voltarBtn rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Voltar</button>
                         </div>
                     </div>
                 </div>

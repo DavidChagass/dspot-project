@@ -32,7 +32,7 @@ class GerenteRegister extends Component
 
         session()->flash('message', 'INSERIMOS O SUJEITO AI RECEBAAAAAA');
         $this->reset();
-        return redirect()->route('login.gerente');
+        return redirect()->route('empresa-dashboard');
 
     }
 
