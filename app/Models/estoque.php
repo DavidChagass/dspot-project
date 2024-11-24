@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class estoque extends Model
 {
-        use HasFactory;
-        protected $fillable =['nome','empresa_id'];
-        protected $table = 'estoque';
+    use HasFactory;
+    protected $fillable =['nome','empresa_id'];
+    protected $table = 'estoque';
 
 public function empresa()
 {
     return $this->belongsTo(Empresas::class);
+}
+
+public function getForeignKey()
+{
+    return 'empresa_id';
 }
 
 /* public function produtos(){

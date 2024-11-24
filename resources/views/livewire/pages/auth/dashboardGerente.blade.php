@@ -3,25 +3,34 @@
 
     <h1>Gerente Dashboard</h1>
     <h2><a href="{{route('funcionario-register')}}">inserir funcionario</a></h2>
+    <h2><a href="{{route('produtos.create')}}">criar novo produto</a></h2>
     <ul>
-        @foreach ($estoques as $estoque)
-            <li>
-                {{ $estoque->nome }}
-                <ul>
-                    @foreach($estoque->produtos as $produto)
-                    <li>produto: {{ $produto->produto }}</li>
-                    <li>detalhes: {{$produto->detalhes}}</li>
-                    <li>quantidade Atual: {{$produto->quantidadeAtual}}</li>
-                    <li>quantidade Total: {{$produto->quantidadeTotal}}</li>
-                    <li>perecivel: {{$produto->perecivel}}</li>
-                    <li>data Validade: {{$produto->dataValidade}}</li>
-                    <li>preco Compra: {{$produto->precoCompra}}</li>
-                    <li>preco Venda: {{$produto->precoVenda}}</li>
-                    <li>fornecedor: {{$produto->fornecedor}}</li>
-                    @endforeach
-                </ul>
-            </li>
-        @endforeach
-    </ul>
+      <table>
+        @foreach ($estoques as $es)
+        <ul>
+            <li>nome do estoque: {{ $es->nome }}</li>
+
+        </ul>
+        <thead>
+            <th>Produto</th>
+            <th>quant atual</th>
+            <th>quant total</th>
+
+        </thead>
+        <tbody>
+
+                @foreach ($es->produtos as $prod)
+                    <tr>
+                        <td>{{ $prod->produto }}</td>
+                        <td>{{ $prod->quantidadeAtual }}</td>
+                        <td>{{ $prod->quantidadeTotal }}</td>
+                        <td><a href="{{route('produtos.show', $prod->id)}}">mostrar mais detalhes</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+            @endforeach
+
+
+    </table>
 
 </div>
