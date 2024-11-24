@@ -1,3 +1,6 @@
+<head>
+    <title>Registrar - Funcionário</title>
+</head>
 <div class="form-wrapper">
     <form class="flex flex-col" wire:submit.prevent="register">
         @csrf
