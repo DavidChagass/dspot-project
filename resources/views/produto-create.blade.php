@@ -77,13 +77,6 @@
             @enderror
         </div>
 
-        <div>
-            <label for="estoque_id">idestoque</label>
-            <input type="text" name="estoque_id" wire:model="estoque_id" required>
-            @error('estoque_id')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
 
         <button type="submit">Inserir Produto</button>
     </form>

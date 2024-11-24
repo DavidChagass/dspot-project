@@ -31,10 +31,6 @@ require __DIR__ . '/auth.php';
 Route::get('/login', Login::class)->name('login');
 
 // Rotas para funcionário
-/* Route::middleware(['guest:funcionario'])->group(function () {
-    Route::get('/funcionario/register', FuncionarioRegister::class)->name('funcionario.register');
-}); */
-
 Route::middleware(['auth:funcionario'])->group(function () {
     Route::get('/funcionario/logout', function () {
         Auth::guard('funcionario')->logout();
@@ -44,10 +40,6 @@ Route::middleware(['auth:funcionario'])->group(function () {
 Route::get('/funcionario/dashboard', Dashboard::class)->name('funcionario-dashboard');
 
 // Rotas para gerente
-/* Route::middleware(['guest:gerente'])->group(function () {
-    Route::get('/gerente/register', GerenteRegister::class)->name('gerente.register');
-});
- */
 Route::middleware(['auth:gerente'])->group(function () {
     Route::get('/gerente/logout', function () {
         Auth::guard('gerente')->logout();
@@ -75,11 +67,9 @@ Route::get('/gerente/register', GerenteRegister::class)->name('gerente-register'
 Route::get('/funcionario/register', FuncionarioRegister::class)->name('funcionario-register');
 
 
-//rotas de produto
-//Route::get('/produtos', ProdutoController::class)->name('produtos');
-//Route::get('/produtos/create', ProdutoController::class)->name('produtos.create');
-//Route::get('/produtos', 'ProdutoController@insertProduto')->name('produtos.store');
-//Route::get('/produtos', [GerenteController::class, 'produtoCreate'])->name('produtos.store');
-//Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
-Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
-Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
+//rotas de produto para o gerente
+Route::get('/produtos/create', [GerenteController::class, 'create'])->name('produtos.create');
+Route::post('/produtos', [GerenteController::class, 'store'])->name('produtos.store');
+Route::get('produtos/{id}', [GerenteController::class, 'show'])->name('produtos.show');
+Route::get('/produtos/edit/{id}', [GerenteController::class, 'edit'])->name('produtos.edit');
+Route::put('/produtos/{id}', [GerenteController::class, 'update'])->name('produtos.update');
