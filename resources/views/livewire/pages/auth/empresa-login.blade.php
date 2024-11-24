@@ -1,5 +1,7 @@
+<head>
+    <title>Login - Dspot</title>
+</head>
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <form class="md:container" wire:submit.prevent="login">
         @csrf
 

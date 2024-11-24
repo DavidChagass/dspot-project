@@ -1,3 +1,6 @@
+<head>
+    <title>Login - Dspot</title>
+</head>
 <div class="form-wrapper">
     <form id="formLogin" class="flex flex-col" wire:submit.prevent="login">
         @csrf
