@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Dspot - Tela inicial</title>
+    <title>Dspot - O melhor lugar para o seu estoque</title>
 
     <!-- Scripts -->
 
