@@ -12,7 +12,7 @@ class FuncionarioControlller extends Controller
 
     public function show($id){
         $produto = produtos::find($id);
-        return view('livewire.pages.auth.DetalhesProdutosFuncionario', compact('produto'));
+        return view('livewire.pages.funcionarios.DetalhesProdutosFuncionario', compact('produto'));
     }
 
     public function edit($id){

@@ -29,13 +29,13 @@ class Dashboard extends Component
 
         switch ($this->role) {
             case 'gerente':
-                $this->view = 'livewire.pages.auth.dashboardGerente';
+                $this->view = 'livewire.pages.gerentes.dashboardGerente';
                 break;
             case 'funcionario':
-                $this->view = 'livewire.pages.auth.dashboardFuncionario';
+                $this->view = 'livewire.pages.funcionarios.dashboardFuncionario';
                 break;
             default:
-                $this->view = 'livewire.pages.auth.dashboardEmpresa';
+                $this->view = 'livewire.pages.empresas.dashboardEmpresa';
                 break;
         }
     }

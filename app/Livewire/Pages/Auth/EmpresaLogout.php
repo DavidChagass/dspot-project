@@ -8,6 +8,6 @@ class EmpresaLogout extends Component
 {
     public function render()
     {
-        return view('livewire.pages.auth.empresa-logout');
+        return view('livewire.pages.empresas.empresa-logout');
     }
 }

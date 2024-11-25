@@ -46,6 +46,6 @@ class EmpresaRegister extends Component
 
     public function render()
     {
-        return view('livewire.pages.auth.empresa-register')->layout('layouts.auth-layout');
+        return view('livewire.pages.empresas.empresa-register')->layout('layouts.auth-layout');
     }
 }

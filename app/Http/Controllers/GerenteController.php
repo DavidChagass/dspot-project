@@ -63,7 +63,7 @@ class GerenteController extends Controller
     public function show($id)
     {
         $produto = produtos::find($id);
-        return view('livewire.pages.auth.DetalhesProdutosGerente', compact('produto'));
+        return view('livewire.pages.gerentes.DetalhesProdutosGerente', compact('produto'));
     }
 
     public function edit($id)
