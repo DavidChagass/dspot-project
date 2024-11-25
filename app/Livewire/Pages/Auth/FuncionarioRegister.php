@@ -45,7 +45,7 @@ class FuncionarioRegister extends Component
     public function render()
     {
         //renderiza a view de registro utilizando o layout
-        return view('livewire.pages.auth.funcionario-register')->layout('layouts.auth-layout');
+        return view('livewire.pages.funcionarios.funcionario-register')->layout('layouts.auth-layout');
     }
 }
 

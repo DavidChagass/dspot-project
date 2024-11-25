@@ -8,6 +8,6 @@ class FuncionarioLogout extends Component
 {
     public function render()
     {
-        return view('livewire.pages.auth.funcionario-logout');
+        return view('livewire.pages.funcionarios.funcionario-logout');
     }
 }

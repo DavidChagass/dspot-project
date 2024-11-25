@@ -8,6 +8,6 @@ class GerenteLogout extends Component
 {
     public function render()
     {
-        return view('livewire.gerente-logout');
+        return view('livewire.pages.gerentes.gerente-logout');
     }
 }

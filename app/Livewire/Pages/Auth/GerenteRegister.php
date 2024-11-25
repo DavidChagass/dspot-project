@@ -44,7 +44,7 @@ class GerenteRegister extends Component
 
     public function render()
     {
-        return view('livewire.pages.auth.gerente-register')->layout('layouts.auth-layout');
+        return view('livewire.pages.gerentes.gerente-register')->layout('layouts.auth-layout');
     }
 
     public function mount(){
