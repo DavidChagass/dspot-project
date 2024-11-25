@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\FuncionarioControlller;
 use App\Http\Controllers\GerenteController;
 use App\Http\Controllers\ProdutoController;
@@ -92,3 +93,10 @@ Route::get('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'show']
 Route::get('/funcionario/produtos/edit/{id}', [FuncionarioControlller::class, 'edit'])->name('funcionario.produtos.edit');
 //rota para a alteração de um produto
 Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update'])->name('funcionario.produtos.update');
+
+
+//rotas de estoque para empresa
+//rota de redirecionamento para a criação de um novo estoque
+Route::get('/empresa/estoque/create', [EmpresaController::class, 'create'])->name('empresa.estoque.create');
+//rota para criar um novo estoque
+Route::get('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
