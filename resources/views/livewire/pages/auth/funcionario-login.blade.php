@@ -1,5 +1,7 @@
+<head>
+    <title>Login - Dspot</title>
+</head>
 <div>
-
     <form class="md:container" wire:submit.prevent="login">
         @csrf
 
