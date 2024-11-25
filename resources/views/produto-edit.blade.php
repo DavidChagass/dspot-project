@@ -1,7 +1,7 @@
 <div>
 
     <div>
-        <form method="POST" action=" {{ url('produtos/' . $produto->id) }} ">
+        <form method="POST" action=" {{ url('/gerente/produtos/' . $produto->id) }} ">
             @csrf
             @method('PUT')
             <div>
@@ -85,7 +85,7 @@
             </div>
 
 
-            <button type="submit">Inserir Produto</button>
+            <button type="submit">Atualizar Produto</button>
         </form>
     </div>
 

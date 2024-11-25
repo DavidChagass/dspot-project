@@ -3,7 +3,7 @@
 
     <h1>Gerente Dashboard</h1>
     <h2><a href="{{route('funcionario-register')}}">inserir funcionario</a></h2>
-    <h2><a href="{{route('produtos.create')}}">criar novo produto</a></h2>
+    <h2><a href="{{route('gerente.produtos.create')}}">criar novo produto</a></h2>
     <ul>
       <table>
         @foreach ($estoques as $es)

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FuncionarioControlller;
 use App\Http\Controllers\GerenteController;
 use App\Http\Controllers\ProdutoController;
 use App\Livewire\EmpresaDashboard;
@@ -59,17 +60,35 @@ Route::middleware(['auth:empresa'])->group(function () {
         return redirect()->route('login');
     })->name('logout.empresa');
 });
+//rota para mostrar a dashboard da empresa
 Route::get('/empresa/dashboard', Dashboard::class)->name('empresa-dashboard');
 
 
-
+//rota de registro de um novo gerente
 Route::get('/gerente/register', GerenteRegister::class)->name('gerente-register');
+//rota de registro de um novo funcionário
 Route::get('/funcionario/register', FuncionarioRegister::class)->name('funcionario-register');
 
 
+
 //rotas de produto para o gerente
-Route::get('/produtos/create', [GerenteController::class, 'create'])->name('produtos.create');
-Route::post('/produtos', [GerenteController::class, 'store'])->name('produtos.store');
-Route::get('produtos/{id}', [GerenteController::class, 'show'])->name('produtos.show');
-Route::get('/produtos/edit/{id}', [GerenteController::class, 'edit'])->name('produtos.edit');
-Route::put('/produtos/{id}', [GerenteController::class, 'update'])->name('produtos.update');
+//rota de redirecionamento para a criação de um novo produto
+Route::get('/gerente/produtos/create', [GerenteController::class, 'create'])->name('gerente.produtos.create');
+//rota para criar um novo produto
+Route::post('/gerente/produtos', [GerenteController::class, 'store'])->name('gerente.produtos.store');
+//rota para mostrar os detalhes de um produto
+Route::get('/gerenteprodutos/{id}', [GerenteController::class, 'show'])->name('gerente.produtos.show');
+//rota de redirecionamento para editar as informações de um produto
+Route::get('/gerente/produtos/edit/{id}', [GerenteController::class, 'edit'])->name('gerente.produtos.edit');
+//rota para a alteração de um produto
+Route::put('/gerente/produtos/{id}', [GerenteController::class, 'update'])->name('gerente.produtos.update');
+//rota para a exclusão de um produto
+Route::delete('/gerente/produtos/{id}', [GerenteController::class, 'destroy'])->name('gerente.produtos.destroy');
+
+//rotas de produto para funcionario
+//rota para mostrar os detalhes de um produto
+Route::get('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'show'])->name('funcionario.produtos.show');
+//rota para redirecionamento para editar a quantidade de um produto
+Route::get('/funcionario/produtos/edit/{id}', [FuncionarioControlller::class, 'edit'])->name('funcionario.produtos.edit');
+//rota para a alteração de um produto
+Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update'])->name('funcionario.produtos.update');

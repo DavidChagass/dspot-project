@@ -16,7 +16,6 @@ class FuncionarioRegister extends Component
 
     //regras de validação do funcionario
     protected $rules = [
-        'empresa_id' => 'required|integer|exists:empresas,id',//exists: verifica se o id da empresa existe
         'nome' => 'required|string|max:250',
         'email' => 'required|email|max:250|unique:users,email',//unique é utilizado para somente ter um unico email
         'password' => 'required|string|min:8|confirmed',
@@ -25,10 +24,11 @@ class FuncionarioRegister extends Component
 
     public function register()
     {
+        $empresa_id = auth()->guard()->user()->empresa_id;
 
         $this->validate();
         $user = User::create([
-            'empresa_id' => $this->empresa_id,
+            'empresa_id' => $empresa_id,
             'nome' => $this->nome,
             'email' => $this->email,
             'password' => FacadesHash::make($this->password),

@@ -1,6 +1,4 @@
 <div>
-
-
     <table>
         <thead>
             <th>Produto</th>
@@ -27,12 +25,5 @@
             </tr>
         </tbody>
     </table>
-
-    <a href=" {{ route('gerente.produtos.edit', $produto->id) }}">editar o produto</a>
-    <form action="{{ route('gerente.produtos.destroy', $produto->id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit">deletar o produto</button>
-    </form>
-
+    <a href="{{ route('funcionario.produtos.edit', $produto->id) }}">alterar a quantidade</a>
 </div>

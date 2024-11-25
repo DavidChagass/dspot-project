@@ -15,12 +15,9 @@ class GerenteDashboard extends Component
     {
         $gerente = auth('web')->user();
         $empresa_id = $gerente->empresa_id;
-
-        $estoqsues = estoque::where('empresa_id', $empresa_id)->get();
-
-
+        $estoques = estoque::where('empresa_id', $empresa_id)->get();
     }
-   
+
 
 
     public function mount()

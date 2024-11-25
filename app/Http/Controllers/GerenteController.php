@@ -17,10 +17,6 @@ class GerenteController extends Controller
 
     public function create()
     {
-        /*         $user = auth()->guard()->user();
-                $empresa = $user->empresa_id;
-                $estoque = estoque::where('empresa_id', $empresa)->first();
-                $this->estoque_id = $estoque->id; */
         return view('produto-create');
     }
 
@@ -31,9 +27,7 @@ class GerenteController extends Controller
         $estoque = estoque::where('empresa_id', $empresa)->first();
         $estoque_id = $estoque->id;
 
-        //dd('bom dia');
-        //  dd($request);
-        //  dd($request->all());
+
         $request->validate([
             'produto' => 'required',
             'detalhes' => 'required',
@@ -57,7 +51,7 @@ class GerenteController extends Controller
         $produto->precoVenda = $request->input('precoVenda');
         $produto->dataValidade = $request->input('dataValidade');
         $produto->fornecedor = $request->input('fornecedor');
-        $produto->estoque_id = $estoque_id; // Aqui você precisa fornecer um valor válido para a coluna estoque_id
+        $produto->estoque_id = $estoque_id; //inserindo o id do estoque
         $produto->save();
 
         // Redirecione para a página de produtos
@@ -82,21 +76,20 @@ class GerenteController extends Controller
 
     public function update(Request $request, $id)
     {
-
-/*         $request->validate([
-            'produto' => 'required',
-            'detalhes' => 'required',
-            'perecivel' => 'required',
-            'quantidadeAtual' => 'required|numeric',
-            'quantidadeTotal' => 'required|numeric',
-            'precoCompra' => 'required|numeric',
-            'precoVenda' => 'required|numeric',
-            'dataValidade' => 'required|date',
-            'fornecedor' => 'required',
-        ]);
- */
         $produtos = produtos::find($id);
         $produtos->update($request->all());
         return redirect()->route('gerente-dashboard');
     }
+
+
+    public function destroy($id)
+    {
+       // dd($id);
+        $produtos = produtos::find($id);
+        $produtos->delete();
+        return redirect()->route('gerente-dashboard');
+    }
+
+
+
 }
