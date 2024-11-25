@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<div class="form-wrapper-login">
     <form class="flex flex-col" wire:submit.prevent="register">
         @csrf
 {{--

@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<div class="form-wrapper-login">
     <form id="formLogin" class="flex flex-col" wire:submit.prevent="login">
         @csrf
 

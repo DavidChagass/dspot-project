@@ -2,7 +2,12 @@ body {
     background-color: #FFFF;
 }
 
-.form-wrapper {
+.form-wrapper-register {
     min-width: 220px;
     width: 55%;
+}
+
+.form-wrapper-login {
+    min-width: 220px;
+    width: 25%;
 }
