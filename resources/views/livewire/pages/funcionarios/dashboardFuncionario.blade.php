@@ -1,6 +1,6 @@
 <div>
 
-    <h1>Gerente Dashboard</h1>
+    <h1>funcionario Dashboard</h1>
     <ul>
         <table>
             @foreach ($estoques as $es)

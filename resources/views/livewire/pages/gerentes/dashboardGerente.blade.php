@@ -24,7 +24,7 @@
                         <td>{{ $prod->produto }}</td>
                         <td>{{ $prod->quantidadeAtual }}</td>
                         <td>{{ $prod->quantidadeTotal }}</td>
-                        <td><a href="{{route('produtos.show', $prod->id)}}">mostrar mais detalhes</a></td>
+                        <td><a href="{{route('gerente.produtos.show', $prod->id)}}">mostrar mais detalhes</a></td>
                     </tr>
                 @endforeach
             </tbody>

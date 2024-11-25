@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Auth;
 
+use App\Models\empresas;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Livewire\Component;
@@ -21,10 +22,10 @@ class GerenteRegister extends Component
     public function register()
     {
         $this->validate();
-        //$empresa_id = auth()->guard()->user()->empresa_id;
 
-        $empresa_id = auth()->guard()->user('empresa')->id;
-       // dd($this->validate());
+        //  $empresa_id = auth()->guard()->user()->empresa->id;
+        // dd($this->validate());
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
 
 
 
@@ -47,7 +48,8 @@ class GerenteRegister extends Component
         return view('livewire.pages.gerentes.gerente-register')->layout('layouts.auth-layout');
     }
 
-    public function mount(){
+    public function mount()
+    {
         $this->empresa_id = auth()->guard()->user()->empresa_id;
     }
 }
