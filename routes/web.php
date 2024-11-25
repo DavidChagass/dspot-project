@@ -77,7 +77,7 @@ Route::get('/gerente/produtos/create', [GerenteController::class, 'create'])->na
 //rota para criar um novo produto
 Route::post('/gerente/produtos', [GerenteController::class, 'store'])->name('gerente.produtos.store');
 //rota para mostrar os detalhes de um produto
-Route::get('/gerenteprodutos/{id}', [GerenteController::class, 'show'])->name('gerente.produtos.show');
+Route::get('/gerente/produtos/{id}', [GerenteController::class, 'show'])->name('gerente.produtos.show');
 //rota de redirecionamento para editar as informações de um produto
 Route::get('/gerente/produtos/edit/{id}', [GerenteController::class, 'edit'])->name('gerente.produtos.edit');
 //rota para a alteração de um produto
