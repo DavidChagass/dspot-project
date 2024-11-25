@@ -1,0 +1,8 @@
+body {
+    background-color: #FFFF;
+}
+
+.form-wrapper {
+    min-width: 220px;
+    width: 25%;
+}
