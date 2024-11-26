@@ -82,7 +82,7 @@ class Dashboard extends Component
         foreach ($estoques as $estoque) {
             $produtos = array_merge($produtos, $estoque->produtos->toArray());
         }
-       dd($estoques);
+      // dd($estoques);
 
         if ($this->estoques->isEmpty()) {
             session()->flash('message', 'Nenhum estoque encontrado.');
