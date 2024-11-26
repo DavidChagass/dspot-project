@@ -99,4 +99,4 @@ Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update
 //rota de redirecionamento para a criação de um novo estoque
 Route::get('/empresa/estoque/create', [EmpresaController::class, 'create'])->name('empresa.estoque.create');
 //rota para criar um novo estoque
-Route::get('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
+Route::post('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
