@@ -65,7 +65,14 @@ class Dashboard extends Component
     public function mostrarProdutos()
     {
         $user = auth('web')->user();
-        $empresa_id = $user->empresa_id;
+
+        if ($this->role === 'gerente') {
+            $empresa_id = $user->empresa_id;
+        }
+
+        if ($this->role === 'empresa') {
+            $empresa_id = $user->id;
+        }
 
         $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
 
@@ -82,7 +89,6 @@ class Dashboard extends Component
         foreach ($estoques as $estoque) {
             $produtos = array_merge($produtos, $estoque->produtos->toArray());
         }
-       dd($estoques);
 
         if ($this->estoques->isEmpty()) {
             session()->flash('message', 'Nenhum estoque encontrado.');
@@ -113,17 +119,15 @@ class Dashboard extends Component
             return view('livewire.pages.empresas.dashboardEmpresa', [
                 'estoques' => $this->estoques,
             ])->layout('layouts.dashboard', [
-                        'title' => $this->getDashboardTitle(),
-                    ]);
+                'title' => $this->getDashboardTitle(),
+            ]);
         } else {
             return view($this->view, [
                 'estoques' => $this->estoques,
             ])->layout('layouts.dashboard', [
-                        'title' => $this->getDashboardTitle(),
-                    ]);
+                'title' => $this->getDashboardTitle(),
+            ]);
         }
-
-
     }
 
     private function getDashboardTitle()
