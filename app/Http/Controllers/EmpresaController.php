@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class EmpresaController extends Controller
 {
     //
-    public   $estoque_id;
+    public $estoque_id;
 
     public function create()
     {
@@ -22,38 +22,30 @@ class EmpresaController extends Controller
     {
         $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
         //dd($empresa_id);
+        if (!$empresa_id) {
+            return redirect()->route('login');
+        } else {
+            $request->validate([
+                'nome' => 'required',
+            ]);
+            $estoque = new estoque();
+            $estoque->nome = $request->input('nome');
+            $estoque->empresa_id = $empresa_id;
+            $estoque->save();
 
-        $request->validate([
-            'nome' => 'required',
-        ]);
-        $estoque = new estoque();
-        $estoque->nome = $request->input('nome');
-        $estoque->empresa_id = $empresa_id;
-        $estoque->save();
-
-        session()->flash('message', 'Estoque criado com sucesso!');
-        return redirect()->route('empresa-dashboard');
+            session()->flash('message', 'Estoque criado com sucesso!');
+            return redirect()->route('empresa-dashboard');
+        }
     }
 
-/*     public function show($id){
-        $estoque = estoque::find($id);
-        return view('livewire.pages.empresas.empresa-estoque-show', compact('estoque'));
+    public function show($id)
+    {
+        $produto = produtos::find($id);
+        if (!$produto) {
+            return redirect()->route('empresa-dashboard')
+                ->with('error', 'Produto nao encontrado.');
+        }
+        return view('livewire.pages.empresas.empresa-detalhes-produto', compact('produto'));
     }
- */
-
-/* public function mostrarProduto($id){
-
- $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
-    $estoques = estoque::where('empresa_id', $empresa_id)->get();
-    $produtos = [];
-
-    foreach ($estoques as $estoque) {
-        $produtos[] = $estoque->produtos;
-    }
-
-    return view('livewire.pages.empresas.dashboardEmpresa', compact('estoques', 'produtos'));
-}
-
- */
 
 }
