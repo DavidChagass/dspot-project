@@ -30,7 +30,7 @@
                     </div>
                     <div class="sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <button class="voltarBtn rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Voltar</button>
+                            <a href="{{ route('login') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Sair</a>
                         </div>
                     </div>
                 </div>
