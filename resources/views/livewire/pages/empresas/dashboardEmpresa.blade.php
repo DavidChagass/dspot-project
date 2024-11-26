@@ -30,8 +30,7 @@
                     @endforeach
                 </tbody>
             @endforeach
-
-
+            
         </table>
 
 </div>

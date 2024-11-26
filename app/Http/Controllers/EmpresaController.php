@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\empresas;
 use App\Models\estoque;
+use App\Models\produtos;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -31,29 +32,13 @@ class EmpresaController extends Controller
 
         session()->flash('message', 'Estoque criado com sucesso!');
         return redirect()->route('empresa-dashboard');
-
-
     }
 
-/*     public function show($id){
-        $estoque = estoque::find($id);
-        return view('livewire.pages.empresas.empresa-estoque-show', compact('estoque'));
+
+    public function show($id){
+        $produto = produtos::find($id);
+        return view('livewire.pages.empresas.DetalhesProdutosEmpresa', compact('produto'));
     }
- */
-
-public function mostrarProduto($id){
-
- $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
-    $estoques = estoque::where('empresa_id', $empresa_id)->get();
-    $produtos = [];
-
-    foreach ($estoques as $estoque) {
-        $produtos[] = $estoque->produtos;
-    }
-
-    return view('livewire.pages.empresas.dashboardEmpresa', compact('estoques', 'produtos'));
-}
-
 
 
 }

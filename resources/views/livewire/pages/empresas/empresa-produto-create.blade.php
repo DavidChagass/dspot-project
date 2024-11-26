@@ -1,5 +1,5 @@
 <div>
-    <form method="POST" action="{{ route('gerente.produtos.store') }}">
+    <form method="POST" action="{{ route('empresa.produtos.store') }}">
         @csrf
 
         <div>
@@ -78,17 +78,6 @@
             @enderror
         </div>
 
-{{--
-        <div>
-            <label for="estoque_id">Estoque:</label>
-            <select name="estoque_id" id="estoque_id">
-                @foreach($estoques as $estoque)
-                    <option value="{{ $estoque->id }}">{{ $estoque->nome }}</option>
-                @endforeach
-            </select>
-        </div>
- --}}
-
         <div>
             <label for="estoque_id">Estoque:</label>
             <select name="estoque_id" id="estoque_id" required>
@@ -98,7 +87,6 @@
                 @endforeach
             </select>
         </div>
-
 
         <button type="submit">Inserir Produto</button>
     </form>

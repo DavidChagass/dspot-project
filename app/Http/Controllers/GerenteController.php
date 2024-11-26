@@ -21,7 +21,7 @@ class GerenteController extends Controller
     $empresa = $user->empresa_id;
     $estoques = Estoque::where('empresa_id', $empresa)->get();
 
-    return view('produto-create', compact('estoques'));
+    return view('livewire.pages.gerentes.gerente-produto-create', compact('estoques'));
         //return view('produto-create');
     }
 
@@ -82,7 +82,7 @@ class GerenteController extends Controller
     {
         $produto = produtos::find($id);
         //dd($produto);
-        return view('produto-edit', compact('produto'));
+        return view('livewire.pages.gerentes.gerente-produto-edit', compact('produto'));
     }
 
 

@@ -100,3 +100,7 @@ Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update
 Route::get('/empresa/estoque/create', [EmpresaController::class, 'create'])->name('empresa.estoque.create');
 //rota para criar um novo estoque
 Route::post('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
+//rota para mostrar os detalhes de um estoque
+Route::get('/empresa/estoque/{id}', [EmpresaController::class, 'showestoque'])->name('empresa.estoque.show');
+//rota para mostrar os detalhes de um produto
+Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'show'])->name('empresa.produtos.show');

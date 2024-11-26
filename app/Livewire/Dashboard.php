@@ -43,25 +43,6 @@ class Dashboard extends Component
     /**
      * Mostra os produtos relacionados à empresa do usuário logado.
      */
-    /*     public function mostrarProdutos()
-        {
-            $user = auth('web')->user();
-            $empresa_id = $user->empresa_id;
-
-            $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
-
-            if ($this->role === 'gerente') {
-                $estoqueQuery->with('produtos'); // Caso seja gerente, incluir os produtos relacionados
-            }
-
-            $this->estoques = $estoqueQuery->get();
-
-            if ($this->estoques->isEmpty()) {
-                session()->flash('message', 'Nenhum estoque encontrado.');
-            }
-        }
-     */
-
     public function mostrarProdutos()
     {
         $user = auth('web')->user();
