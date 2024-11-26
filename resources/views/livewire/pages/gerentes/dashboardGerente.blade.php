@@ -4,14 +4,14 @@
     <h1>Gerente Dashboard</h1>
     <h2><a href="{{route('funcionario-register')}}">inserir funcionario</a></h2>
     <h2><a href="{{route('gerente.produtos.create')}}">criar novo produto</a></h2>
-    <ul>
-      <table>
-        @foreach ($estoques as $es)
-        <ul>
-            <li>nome do estoque: {{ $es->nome }}</li>
 
-        </ul>
+    @foreach ($estoques as $es)
+    <h1>nome do estoque: {{ $es->nome }}</h1>
+
+      <table>
+
         <thead>
+
             <th>Produto</th>
             <th>quant atual</th>
             <th>quant total</th>
@@ -28,9 +28,9 @@
                     </tr>
                 @endforeach
             </tbody>
-            @endforeach
 
 
-    </table>
+        </table>
+    @endforeach
 
 </div>

@@ -17,7 +17,12 @@ class GerenteController extends Controller
 
     public function create()
     {
-        return view('produto-create');
+        $user = auth()->guard()->user();
+    $empresa = $user->empresa_id;
+    $estoques = Estoque::where('empresa_id', $empresa)->get();
+
+    return view('produto-create', compact('estoques'));
+        //return view('produto-create');
     }
 
     public function store(Request $request)
@@ -26,7 +31,7 @@ class GerenteController extends Controller
         $empresa = $user->empresa_id;
         $estoque = estoque::where('empresa_id', $empresa)->first();
         $estoque_id = $estoque->id;
-
+     //   dd($estoque_id);
 
         $request->validate([
             'produto' => 'required',
@@ -38,8 +43,8 @@ class GerenteController extends Controller
             'precoVenda' => 'required|numeric',
             'dataValidade' => 'required|date',
             'fornecedor' => 'required',
+            'estoque_id' => 'required',
         ]);
-
 
         $produto = new produtos();
         $produto->produto = $request->input('produto');
@@ -51,7 +56,7 @@ class GerenteController extends Controller
         $produto->precoVenda = $request->input('precoVenda');
         $produto->dataValidade = $request->input('dataValidade');
         $produto->fornecedor = $request->input('fornecedor');
-        $produto->estoque_id = $estoque_id; //inserindo o id do estoque
+        $produto->estoque_id = $request->input('estoque_id'); //inserindo o id do estoque
         $produto->save();
 
         // Redirecione para a página de produtos
@@ -64,13 +69,13 @@ class GerenteController extends Controller
     {
         $produto = produtos::find($id);
 
-    if (!$produto) {
-        return redirect()->route('gerente-dashboard')
-                         ->with('error', 'Produto não encontrado.');
-    }
+        if (!$produto) {
+            return redirect()->route('gerente-dashboard')
+                ->with('error', 'Produto não encontrado.');
+        }
 
-    return view('livewire.pages.gerentes.DetalhesProdutosGerente', compact('produto'));
-    
+        return view('livewire.pages.gerentes.DetalhesProdutosGerente', compact('produto'));
+
     }
 
     public function edit($id)
@@ -91,7 +96,7 @@ class GerenteController extends Controller
 
     public function destroy($id)
     {
-       // dd($id);
+        // dd($id);
         $produtos = produtos::find($id);
         $produtos->delete();
         return redirect()->route('gerente-dashboard');

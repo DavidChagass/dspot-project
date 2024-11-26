@@ -21,6 +21,7 @@
         <div>
             <label for="perecivel">Perecível</label>
             <select name="perecivel" wire:model="perecivel" required>
+                <option value="" selected data-default>Selecione se seu produto é perecivel</option>
                 <option value="0">Não</option>
                 <option value="1">Sim</option>
             </select>
@@ -75,6 +76,27 @@
             @error('fornecedor')
                 <span class="error">{{ $message }}</span>
             @enderror
+        </div>
+
+{{--
+        <div>
+            <label for="estoque_id">Estoque:</label>
+            <select name="estoque_id" id="estoque_id">
+                @foreach($estoques as $estoque)
+                    <option value="{{ $estoque->id }}">{{ $estoque->nome }}</option>
+                @endforeach
+            </select>
+        </div>
+ --}}
+
+        <div>
+            <label for="estoque_id">Estoque:</label>
+            <select name="estoque_id" id="estoque_id" required>
+                <option value="" selected data-default>Selecione seu estoque</option>
+                @foreach($estoques as $es)
+                <option value="{{ $es->id }}">{{ $es->nome }}   </option>
+                @endforeach
+            </select>
         </div>
 
 
