@@ -3,7 +3,6 @@
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\FuncionarioControlller;
 use App\Http\Controllers\GerenteController;
-use App\Http\Controllers\ProdutoController;
 use App\Livewire\EmpresaDashboard;
 use App\Livewire\FuncionarioDashboard;
 use App\Livewire\GerenteDashboard;
@@ -17,14 +16,6 @@ use App\Livewire\Dashboard;
 
 
 Route::view('/', 'welcome')->name('welcome');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
 
 require __DIR__ . '/auth.php';
 
@@ -62,6 +53,7 @@ Route::middleware(['auth:empresa'])->group(function () {
     })->name('logout.empresa');
 });
 //rota para mostrar a dashboard da empresa
+
 Route::get('/empresa/dashboard', Dashboard::class)->name('empresa-dashboard');
 
 

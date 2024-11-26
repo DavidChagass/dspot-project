@@ -52,7 +52,8 @@ class Dashboard extends Component
         }
 
         if ($this->role === 'empresa') {
-            $empresa_id = $user->id;
+            //$empresa_id = $user->id;
+            $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
         }
 
         $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
@@ -70,6 +71,7 @@ class Dashboard extends Component
         foreach ($estoques as $estoque) {
             $produtos = array_merge($produtos, $estoque->produtos->toArray());
         }
+      //  dd($estoques);
 
         if ($this->estoques->isEmpty()) {
             session()->flash('message', 'Nenhum estoque encontrado.');

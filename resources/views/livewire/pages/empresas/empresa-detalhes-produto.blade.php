@@ -28,8 +28,8 @@
         </tbody>
     </table>
 
-    <a href=" {{ route('empresa.produtos.edit', $produto->id) }}">editar o produto</a>
-    <form action="{{ route('empresa.produtos.destroy', $produto->id) }}" method="POST">
+    <a href=" {{-- {{ route('empresa.produtos.edit', $produto->id) }} --}}">editar o produto</a>
+    <form action="{{-- {{ route('empresa.produtos.destroy', $produto->id) }} --}}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit">deletar o produto</button>
