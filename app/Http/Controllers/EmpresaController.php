@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class EmpresaController extends Controller
 {
     //
-    public   $estoque_id;
+    public $estoque_id;
 
     public function create()
     {
