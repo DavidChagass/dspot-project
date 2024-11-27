@@ -78,6 +78,7 @@ Route::put('/gerente/produtos/{id}', [GerenteController::class, 'update'])->name
 //rota para a exclusão de um produto
 Route::delete('/gerente/produtos/{id}', [GerenteController::class, 'destroy'])->name('gerente.produtos.destroy');
 
+
 //rotas de produto para funcionario
 //rota para mostrar os detalhes de um produto
 Route::get('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'show'])->name('funcionario.produtos.show');
@@ -92,7 +93,17 @@ Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update
 Route::get('/empresa/estoque/create', [EmpresaController::class, 'create'])->name('empresa.estoque.create');
 //rota para criar um novo estoque
 Route::post('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
+//rota de redirecionamento para a criação de um novo produto
+Route::get('/empresa/produtos/create', [EmpresaController::class, 'createproduto'])->name('empresa.produtos.create');
+//rota para criar um novo produto
+Route::post('/empresa/produtos', [EmpresaController::class, 'storeproduto'])->name('empresa.produtos.store');
 //rota para mostrar os detalhes de um estoque
-Route::get('/empresa/estoque/{id}', [EmpresaController::class, 'showestoque'])->name('empresa.estoque.show');
+Route::get('/empresa/estoque/{id}', [EmpresaController::class, 'show'])->name('empresa.estoque.show');
 //rota para mostrar os detalhes de um produto
-Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'show'])->name('empresa.produtos.show');
+Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'showproduto'])->name('empresa.produtos.show');
+//rota para redirecionamento para editar as informações de um produto
+Route::get('/empresa/produtos/edit/{id}', [EmpresaController::class, 'editproduto'])->name('empresa.produtos.edit');
+//rota para a alteração de um produto
+Route::put('/empresa/produtos/{id}', [EmpresaController::class, 'updateproduto'])->name('empresa.produtos.update');
+//rota para a exclusão de um produto
+Route::delete('/empresa/produtos/{id}', [EmpresaController::class, 'destroyproduto'])->name('empresa.produtos.destroy');
