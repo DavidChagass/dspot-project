@@ -19,6 +19,6 @@ class FuncionarioControlller extends Controller
     public function edit($id)
     {
         $produto = produtos::find($id);
-        return view('funcionario-produto-edit', compact('produto'));
+        return view('livewire.pages.funcionarios.funcionario-produto-edit', compact('produto'));
     }
 }

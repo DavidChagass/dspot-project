@@ -43,25 +43,6 @@ class Dashboard extends Component
     /**
      * Mostra os produtos relacionados à empresa do usuário logado.
      */
-    /*     public function mostrarProdutos()
-        {
-            $user = auth('web')->user();
-            $empresa_id = $user->empresa_id;
-
-            $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
-
-            if ($this->role === 'gerente') {
-                $estoqueQuery->with('produtos'); // Caso seja gerente, incluir os produtos relacionados
-            }
-
-            $this->estoques = $estoqueQuery->get();
-
-            if ($this->estoques->isEmpty()) {
-                session()->flash('message', 'Nenhum estoque encontrado.');
-            }
-        }
-     */
-
     public function mostrarProdutos()
     {
         $user = auth('web')->user();
@@ -70,8 +51,13 @@ class Dashboard extends Component
             $empresa_id = $user->empresa_id;
         }
 
+        if ($this->role === 'funcionario') {
+            $empresa_id = $user->empresa_id;
+        }
+
         if ($this->role === 'empresa') {
-            $empresa_id = $user->id;
+            //$empresa_id = $user->id;
+            $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
         }
 
         $estoqueQuery = Estoque::where('empresa_id', $empresa_id);
@@ -84,27 +70,20 @@ class Dashboard extends Component
             $estoqueQuery->with('produtos'); // Incluir os produtos relacionados à empresa
         }
 
+        if ($this->role === 'funcionario') {
+            $estoqueQuery->with('produtos'); // Incluir os produtos relacionados à empresa
+        }
+
         $estoques = $this->estoques = $estoqueQuery->get();
         $produtos = [];
         foreach ($estoques as $estoque) {
             $produtos = array_merge($produtos, $estoque->produtos->toArray());
         }
+      //  dd($estoques);
 
         if ($this->estoques->isEmpty()) {
             session()->flash('message', 'Nenhum estoque encontrado.');
         }
-    }
-
-
-
-
-
-
-
-
-
-    public function AlteraQuantidade(Request $quant)
-    {
     }
 
     public function render()

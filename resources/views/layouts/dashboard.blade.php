@@ -19,7 +19,6 @@
     @livewireStyles
 
 </head>
-
 <body class="overflow-x-hidden">
     <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -30,9 +29,9 @@
                     </div>
                     <div class="sm:ml-6 sm:block">
                         <div class="flex space-x-4 items-center">
-                            <div class="flex">
+                            <div class="grid justify-items-end items-center grid-cols-2 gap-x-2.5">
                                 <img class="inline-block size-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <p></p>
+                                <p class="text-white">Bem-vindo!<br><strong>{{ $user->nome }}</strong></p>
                             </div>
                             <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Início</a>
                             <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Sair</a>
@@ -43,7 +42,6 @@
         </div>
         </div>
     </nav>
-
     <div class="container container-fluid">
         <div class="flex justify-center min-h-screen">
             <main class="flex items-center container-sm justify-center">
