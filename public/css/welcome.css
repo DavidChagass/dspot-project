@@ -1,0 +1,25 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0047ab;
+    color: white;
+    text-align: center;
+}
+
+.content-section {
+    
+    max-width: 800px;
+    padding: 20px;
+}
+
+.logo-section {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.slogan-section {
+    font-size: 2em;
+    font-weight: bold;
+}
