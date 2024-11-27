@@ -51,6 +51,10 @@ class Dashboard extends Component
             $empresa_id = $user->empresa_id;
         }
 
+        if ($this->role === 'funcionario') {
+            $empresa_id = $user->empresa_id;
+        }
+
         if ($this->role === 'empresa') {
             //$empresa_id = $user->id;
             $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
@@ -63,6 +67,10 @@ class Dashboard extends Component
         }
 
         if ($this->role === 'empresa') {
+            $estoqueQuery->with('produtos'); // Incluir os produtos relacionados à empresa
+        }
+
+        if ($this->role === 'funcionario') {
             $estoqueQuery->with('produtos'); // Incluir os produtos relacionados à empresa
         }
 
