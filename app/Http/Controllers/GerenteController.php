@@ -18,10 +18,10 @@ class GerenteController extends Controller
     public function create()
     {
         $user = auth()->guard()->user();
-    $empresa = $user->empresa_id;
-    $estoques = Estoque::where('empresa_id', $empresa)->get();
+        $empresa = $user->empresa_id;
+        $estoques = estoque::where('empresa_id', $empresa)->get();
 
-    return view('livewire.pages.gerentes.gerente-produto-create', compact('estoques'));
+        return view('livewire.pages.gerentes.gerente-produto-create', compact('estoques'));
         //return view('produto-create');
     }
 
@@ -31,7 +31,7 @@ class GerenteController extends Controller
         $empresa = $user->empresa_id;
         $estoque = estoque::where('empresa_id', $empresa)->first();
         $estoque_id = $estoque->id;
-     //   dd($estoque_id);
+        //   dd($estoque_id);
 
         $request->validate([
             'produto' => 'required',

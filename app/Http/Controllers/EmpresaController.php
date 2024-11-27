@@ -18,6 +18,54 @@ class EmpresaController extends Controller
         return view('livewire.pages.empresas.empresa-estoque-create');
     }
 
+    public function createproduto()
+    {
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
+        if (!$empresa_id) {
+            return redirect()->route('empresa-dashboard');
+        } else {
+            $estoques = estoque::where('empresa_id', $empresa_id)->get();
+            return view('livewire.pages.empresas.empresa-produto-create', compact('estoques'));
+        }
+    }
+
+    public function storeproduto(Request $request)
+    {
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
+        if (!$empresa_id) {
+            return redirect()->route('login');
+        } else {
+            $request->validate([
+                'produto' => 'required',
+                'detalhes' => 'required',
+                'perecivel' => 'required',
+                'quantidadeAtual' => 'required|numeric',
+                'quantidadeTotal' => 'required|numeric',
+                'precoCompra' => 'required|numeric',
+                'precoVenda' => 'required|numeric',
+                'dataValidade' => 'required|date',
+                'fornecedor' => 'required',
+                'estoque_id' => 'required',
+            ]);
+            $produto = new produtos();
+            $produto->produto = $request->input('produto');
+            $produto->detalhes = $request->input('detalhes');
+            $produto->perecivel = $request->input('perecivel');
+            $produto->quantidadeAtual = $request->input('quantidadeAtual');
+            $produto->quantidadeTotal = $request->input('quantidadeTotal');
+            $produto->precoCompra = $request->input('precoCompra');
+            $produto->precoVenda = $request->input('precoVenda');
+            $produto->dataValidade = $request->input('dataValidade');
+            $produto->fornecedor = $request->input('fornecedor');
+            $produto->estoque_id = $request->input('estoque_id');
+            $produto->save();
+
+            session()->flash('message', 'Produto criado com sucesso!');
+            return redirect()->route('empresa-dashboard');
+        }
+    }
+
+
     public function store(Request $request)
     {
         $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
@@ -38,7 +86,7 @@ class EmpresaController extends Controller
         }
     }
 
-    public function show($id)
+    public function showproduto($id)
     {
         $produto = produtos::find($id);
         if (!$produto) {
@@ -46,6 +94,28 @@ class EmpresaController extends Controller
                 ->with('error', 'Produto nao encontrado.');
         }
         return view('livewire.pages.empresas.empresa-detalhes-produto', compact('produto'));
+    }
+
+    public function editproduto($id)
+    {
+        $produto = produtos::find($id);
+        return view('livewire.pages.empresas.empresa-produto-edit', compact('produto'));
+    }
+
+    public function updateproduto(Request $request, $id)
+    {
+        $produto = produtos::find($id);
+        $produto->update($request->all());
+        return redirect()->route('empresa-dashboard');
+    }
+
+
+    public function destroyproduto($id)
+    {
+        $produto = produtos::find($id);
+        $produto->delete();
+        return redirect()->route('empresa-dashboard');
+
     }
 
 }
