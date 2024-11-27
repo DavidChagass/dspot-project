@@ -93,12 +93,23 @@ Route::put('/funcionario/produtos/{id}', [FuncionarioControlller::class, 'update
 Route::get('/empresa/estoque/create', [EmpresaController::class, 'create'])->name('empresa.estoque.create');
 //rota para criar um novo estoque
 Route::post('/empresa/estoque', [EmpresaController::class, 'store'])->name('empresa.estoque.store');
+//rota para mostrar os detalhes de um estoque
+Route::get('/empresa/estoque/{id}', [EmpresaController::class, 'show'])->name('empresa.estoque.show');
+//rota para redirecionamento para editar as informações de um estoque
+Route::get('/empresa/estoque/edit/{id}', [EmpresaController::class, 'edit'])->name('empresa.estoque.edit');
+//rota para a alteração de um estoque
+Route::put('/empresa/estoque/{id}', [EmpresaController::class, 'update'])->name('empresa.estoque.update');
+//rota para a exclusão de um estoque
+Route::delete('/empresa/estoque/{id}', [EmpresaController::class, 'destroy'])->name('empresa.estoque.destroy');
+
+
+
+
+//rotas de produto para empresa
 //rota de redirecionamento para a criação de um novo produto
 Route::get('/empresa/produtos/create', [EmpresaController::class, 'createproduto'])->name('empresa.produtos.create');
 //rota para criar um novo produto
 Route::post('/empresa/produtos', [EmpresaController::class, 'storeproduto'])->name('empresa.produtos.store');
-//rota para mostrar os detalhes de um estoque
-Route::get('/empresa/estoque/{id}', [EmpresaController::class, 'show'])->name('empresa.estoque.show');
 //rota para mostrar os detalhes de um produto
 Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'showproduto'])->name('empresa.produtos.show');
 //rota para redirecionamento para editar as informações de um produto

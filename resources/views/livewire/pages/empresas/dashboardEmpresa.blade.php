@@ -10,6 +10,7 @@
     @foreach ($estoques as $es)
         <table>
             <h1>nome do estoque: {{ $es->nome }}</h1>
+            <a href="{{ route('empresa.estoque.edit', $es->id) }}">editar ou apagar o estoque</a>
             <thead>
                 <th>Produto</th>
                 <th>quant atual</th>

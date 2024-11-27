@@ -13,11 +13,6 @@ class EmpresaController extends Controller
     //
     public $estoque_id;
 
-    public function create()
-    {
-        return view('livewire.pages.empresas.empresa-estoque-create');
-    }
-
     public function createproduto()
     {
         $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
@@ -65,27 +60,6 @@ class EmpresaController extends Controller
         }
     }
 
-
-    public function store(Request $request)
-    {
-        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
-        //dd($empresa_id);
-        if (!$empresa_id) {
-            return redirect()->route('login');
-        } else {
-            $request->validate([
-                'nome' => 'required',
-            ]);
-            $estoque = new estoque();
-            $estoque->nome = $request->input('nome');
-            $estoque->empresa_id = $empresa_id;
-            $estoque->save();
-
-            session()->flash('message', 'Estoque criado com sucesso!');
-            return redirect()->route('empresa-dashboard');
-        }
-    }
-
     public function showproduto($id)
     {
         $produto = produtos::find($id);
@@ -117,5 +91,54 @@ class EmpresaController extends Controller
         return redirect()->route('empresa-dashboard');
 
     }
+
+
+
+    //rotas de estoque
+    public function create()
+    {
+        return view('livewire.pages.empresas.empresa-estoque-create');
+    }
+
+    public function store(Request $request)
+    {
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
+        //dd($empresa_id);
+        if (!$empresa_id) {
+            return redirect()->route('login');
+        } else {
+            $request->validate([
+                'nome' => 'required',
+            ]);
+            $estoque = new estoque();
+            $estoque->nome = $request->input('nome');
+            $estoque->empresa_id = $empresa_id;
+            $estoque->save();
+
+            session()->flash('message', 'Estoque criado com sucesso!');
+            return redirect()->route('empresa-dashboard');
+        }
+    }
+
+    public function edit($id)
+    {
+        $estoque = estoque::find($id);
+        return view('livewire.pages.empresas.empresa-estoque-edit', compact('estoque'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $estoque = estoque::find($id);
+        $estoque->update($request->all());
+        return redirect()->route('empresa-dashboard');
+    }
+
+    public function destroy($id)
+    {
+        $estoque = estoque::find($id);
+        $estoque->delete();
+        return redirect()->route('empresa-dashboard');
+    }
+
 
 }
