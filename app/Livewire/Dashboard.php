@@ -86,10 +86,6 @@ class Dashboard extends Component
         }
     }
 
-    public function AlteraQuantidade(Request $quant)
-    {
-    }
-
     public function render()
     {
         /*  return view($this->view, [
