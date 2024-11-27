@@ -13,7 +13,7 @@
     </form>
     <h1>deletar o produto</h1>
 
-    <form action=" {{ route('empresa.estoque.destroy', $estoqueg->id) }} " method="POST">
+    <form action=" {{ route('empresa.estoque.destroy', $estoque->id) }} " method="POST">
         @csrf
         @method('DELETE')
         <button type="submit">deletar o produto</button>
