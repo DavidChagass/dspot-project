@@ -78,14 +78,6 @@ class Dashboard extends Component
         }
     }
 
-
-
-
-
-
-
-
-
     public function AlteraQuantidade(Request $quant)
     {
     }
