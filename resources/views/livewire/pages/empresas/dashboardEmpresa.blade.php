@@ -1,5 +1,5 @@
 <div class="container mx-auto p-1.5">
-    <header class="bg-slate-200 flex rounded">
+    <header class="bg-slate-200 flex rounded border-2 border-solid border-gray-300">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-8" aria-label="Global">
             <div class="flex lg:hidden">
                 <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
-                <div class="relative">
+                <div id="btn-dropdown" class="relative">
                     <button type="button" class="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900" aria-expanded="false">
                         Product
                         <svg class="size-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -28,7 +28,7 @@
             From: "opacity-100 translate-y-0"
             To: "opacity-0 translate-y-1"
         -->
-                    <div class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                    <div id="dropdown" class="hidden absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-slate-200 shadow-lg ring-1 ring-gray-900/5">
                         <div class="p-4">
                             <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50">
                                 <div class="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
