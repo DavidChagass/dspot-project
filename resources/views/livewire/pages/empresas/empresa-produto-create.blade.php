@@ -48,7 +48,7 @@
 
         <div>
             <label for="precoCompra">Preço de Compra</label>
-            <input type="number" name="precoCompra" wire:model="precoCompra" required>
+            <input type="number" step=".01" name="precoCompra" wire:model="precoCompra" required>
             @error('precoCompra')
                 <span class="error">{{ $message }}</span>
             @enderror
@@ -56,7 +56,7 @@
 
         <div>
             <label for="precoVenda">Preço de Venda</label>
-            <input type="number" name="precoVenda" wire:model="precoVenda" required>
+            <input type="number" step=".01" name="precoVenda" wire:model="precoVenda" required>
             @error('precoVenda')
                 <span class="error">{{ $message }}</span>
             @enderror
