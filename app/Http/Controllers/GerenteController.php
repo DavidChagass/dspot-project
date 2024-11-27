@@ -37,7 +37,7 @@ class GerenteController extends Controller
             'produto' => 'required',
             'detalhes' => 'required',
             'perecivel' => 'required',
-            'quantidadeAtual' => 'required|numeric',
+            'quantidadeAtual' => 'required|numeric|lte:quantidadeTotal',
             'quantidadeTotal' => 'required|numeric',
             'precoCompra' => 'required|numeric',
             'precoVenda' => 'required|numeric',
@@ -74,7 +74,7 @@ class GerenteController extends Controller
                 ->with('error', 'Produto não encontrado.');
         }
 
-        return view('livewire.pages.gerentes.DetalhesProdutosGerente', compact('produto'));
+        return view('livewire.pages.gerentes.gerente-detalhes-produto', compact('produto'));
 
     }
 
@@ -89,6 +89,9 @@ class GerenteController extends Controller
     public function update(Request $request, $id)
     {
         $produtos = produtos::find($id);
+        $request->validate([
+            'quantidadeAtual' => 'required|numeric|lte:quantidadeTotal',
+        ]);
         $produtos->update($request->all());
         return redirect()->route('gerente-dashboard');
     }

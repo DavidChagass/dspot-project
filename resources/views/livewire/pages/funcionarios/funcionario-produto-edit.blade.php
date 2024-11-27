@@ -1,7 +1,7 @@
 <div>
 
     <div>
-        <form method="POST" action="{{-- {{url('funcionario-produto-edit/'.$produto->id)}} --}}">
+        <form method="POST" action="{{ url('funcionario/produtos/' . $produto->id) }} ">
             @csrf
             @method('PUT')
 
