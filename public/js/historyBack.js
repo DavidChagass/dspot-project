@@ -16,6 +16,9 @@ if (currentUrl.includes("/empresa/register") || currentUrl.includes("/login") ||
     // Altera o atributo "href" do botão dinâmico para a rota de home
     dynamicButton.setAttribute("href", routes.home);
 }
+else if (currentUrl.includes("/gerente/register")) {
+    dynamicButton.classList.toggle('voltarBtn');
+}
 
 // Adiciona um evento de clique ao botão de voltar (com a classe 'voltarBtn')
 // Este evento faz o navegador voltar à página anterior

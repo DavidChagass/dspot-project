@@ -106,7 +106,7 @@
 
                 <div class="bg-white shadow-md rounded-lg p-4">
                     <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
-                        <img class="w-full h-full object-cover" src="{{ asset('/src/DavidTeodoro.jpg') }}" alt="Membro 2">
+                        <img class="w-full h-full object-cover" src="{{ asset('/src/CaikGiordane.jpg') }}" alt="Membro 2">
                     </div>
                     <h2 class="text-xl font-semibold text-center mt-4">Caik Giordane</h2>
                     <p class="text-gray-600 text-center">Desenvolvedor Front-End</p>
