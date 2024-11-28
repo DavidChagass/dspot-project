@@ -32,8 +32,8 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <a href="{{route('empresa.register')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Create Depot</a>
-                            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Assinatura</a>
+                            <a href="{{route('empresa.register')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Criar Depósito</a>
+                            <a href="#contato" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Assinatura</a>
                             <a href="#sobre" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sobre</a>
                             <div class="relative inline-block text-left">
                                 <div>
@@ -63,7 +63,7 @@
         </div>
         <div class="hidden sm:hidden" id="dropdown">
             <div class="space-y-1 px-2 pb-3 pt-2">
-                <a href="{{route('empresa.register')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Create Depot</a>
+                <a href="{{route('empresa.register')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Criar Depósito</a>
                 <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Assinatura</a>
                 <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sobre</a>
                 <a href="{{route('login')}}" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Entrar</a>
@@ -85,10 +85,68 @@
 
         <h2 class="text-3xl font-bold">Sobre Nós</h2>
 
-        <p class="mt-4">Somos uma empresa dedicada a fornecer soluções inovadoras para nossos clientes.</p>
+        <p class="mt-4 p-8 text-center">
+            Na <strong>Dspot</strong>, transformamos a gestão de estoque em uma experiência eficiente e personalizada.<br>
+            Somos especialistas no desenvolvimento de soluções inteligentes e sob medida, que atendem às necessidades únicas de cada cliente.<br>
+            Combinando tecnologia de ponta, inovação e expertise, ajudamos empresas de todos os tamanhos a otimizar seus processos, reduzir <br> custos e alcançar maior controle sobre suas operações. <br> Nosso compromisso é simplificar a gestão de estoque, garantindo precisão, praticidade e resultados sólidos.
+        </p>
+
+        <article id="equipe" data-aos="fade-up" class="container mx-auto text-center p-6">
+            <h2 class="text-2xl font-bold text-center mb-6">Conheça Nosso Time</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
+                        <img class="w-full h-full object-cover" src="{{ asset('/src/DavidTeodoro.jpg') }}" alt="Membro 1">
+                    </div>
+                    <h2 class="text-xl font-semibold text-center mt-4">David Teodoro</h2>
+                    <p class="text-gray-600 text-center">Desenvolvedor Back-End</p>
+                    <p class="text-gray-500 text-center mt-2">Desenvolvedor Back-End especializado em criar soluções robustas e escaláveis.</p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
+                        <img class="w-full h-full object-cover" src="{{ asset('/src/DavidTeodoro.jpg') }}" alt="Membro 2">
+                    </div>
+                    <h2 class="text-xl font-semibold text-center mt-4">Caik Giordane</h2>
+                    <p class="text-gray-600 text-center">Desenvolvedor Front-End</p>
+                    <p class="text-gray-500 text-center mt-2">Desenvolvedor Front-End dedicado a criar interfaces intuitivas e experiências envolventes.</p>
+                </div>
+
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
+                        <img class="w-full h-full object-cover" src="{{ asset('/src/FernandoAlvarez.jpg') }}" alt="Membro 3">
+                    </div>
+                    <h2 class="text-xl font-semibold text-center mt-4">Fernando Alvarez</h2>
+                    <p class="text-gray-600 text-center">Projetista - Comunicação</p>
+                    <p class="text-gray-500 text-center mt-2">Projetista especializado em Comunicação, com foco em criar estratégias criativas e eficazes.</p>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
+                            <img class="w-full h-full object-cover" src="{{ asset('/src/FernandoAlvarez.jpg') }}" alt="Membro 3">
+                        </div>
+                        <h2 class="text-xl font-semibold text-center mt-4">Caio Eduardo</h2>
+                        <p class="text-gray-600 text-center">Design Gráfico</p>
+                        <p class="text-gray-500 text-center mt-2">Designer Gráfico criativo e detalhista, especializado em desenvolver identidades visuais e materiais gráficos.</p>
+                    </div>
+
+                    <div class="bg-white shadow-md rounded-lg p-4">
+                        <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
+                            <img class="w-full h-full object-cover" src="{{ asset('/src/FernandoAlvarez.jpg') }}" alt="Membro 3">
+                        </div>
+                        <h2 class="text-xl font-semibold text-center mt-4">Ravi Amaral</h2>
+                        <p class="text-gray-600 text-center">Tester - Analista</p>
+                        <p class="text-gray-500 text-center mt-2">Tester e Analista meticuloso, especializado em garantir a qualidade e a funcionalidade de sistemas.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
 
     </section>
-
 
     <section id="servicos" data-aos="fade-up" class="container mx-auto text-center py-20">
 
@@ -98,25 +156,34 @@
 
             <div class="bg-white p-6 rounded-lg shadow-lg">
 
-                <h3 class="text-xl font-semibold">Serviço 1</h3>
+                <h3 class="text-xl font-semibold">Plataforma de Gerenciamento de Estoque</h3>
 
-                <p class="mt-2">Descrição do serviço 1.</p>
-
-            </div>
-
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-
-                <h3 class="text-xl font-semibold">Serviço 2</h3>
-
-                <p class="mt-2">Descrição do serviço 2.</p>
+                <p class="mt-2">
+                    Nossa plataforma oferece uma solução completa para otimizar a gestão de estoque. Com funcionalidades personalizáveis, você pode monitorar entradas e saídas, controlar níveis de inventário em tempo real e gerar relatórios detalhados.
+                    Projetada para integrar-se perfeitamente aos seus processos, a plataforma ajuda a reduzir desperdícios, evitar rupturas e melhorar a eficiência operacional. Ideal para empresas que buscam mais controle e precisão no gerenciamento de seus recursos.
+                </p>
 
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow-lg">
 
-                <h3 class="text-xl font-semibold">Serviço 3</h3>
+                <h3 class="text-xl font-semibold">Adaptação de sistema</h3>
 
-                <p class="mt-2">Descrição do serviço 3.</p>
+                <p class="mt-2">
+                    Oferecemos serviços de adaptação de sistemas para atender às necessidades específicas do seu negócio. Nossa equipe especializada ajusta funcionalidades, integrações e processos para alinhar seu sistema atual às demandas operacionais e estratégias da sua empresa.
+                    Com foco em personalização e eficiência, garantimos que a tecnologia seja uma aliada na sua rotina, proporcionando soluções sob medida para maximizar resultados e facilitar a gestão.
+                </p>
+
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+
+                <h3 class="text-xl font-semibold">Acessoria e Consultoria Técnica</h3>
+
+                <p class="mt-2">
+                    Nossa assessoria e consultoria técnica oferecem suporte especializado para otimizar processos, identificar melhorias e implementar as melhores soluções tecnológicas para o seu negócio.
+                    Contamos com profissionais experientes que analisam suas necessidades, fornecem recomendações estratégicas e garantem a execução de soluções eficientes, alinhadas com os objetivos da sua empresa. Seja para resolver problemas específicos ou aprimorar sistemas, estamos ao seu lado em cada etapa.
+                </p>
 
             </div>
 
@@ -125,7 +192,7 @@
     </section>
 
 
-    <section id="contato" class="container mx-auto text-center py-20">
+    <section id="contato" data-aos="fade-up" class="container mx-auto text-center py-20">
 
         <h2 class="text-3xl font-bold">Entre em Contato</h2>
 
@@ -150,9 +217,7 @@
 
     </footer>
     <script>
-
         AOS.init();
-    
     </script>
 </body>
 
