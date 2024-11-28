@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->integer('quantidadeTotal');
             $table->double('precoCompra');
             $table->double('precoVenda');
-            $table->dateTime('dataValidade');
+            $table->dateTime('dataValidade')->nullable();
             $table->string('fornecedor');
             $table->timestamps();
         });
