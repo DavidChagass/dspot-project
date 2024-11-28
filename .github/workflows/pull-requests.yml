@@ -1,12 +1,17 @@
+# Define o nome do fluxo de trabalho
 name: pull requests
 
+# Define o evento que aciona o fluxo de trabalho (neste caso, quando uma pull request é aberta)
 on:
   pull_request_target:
-    types: [opened]
+    types: [opened]  # Ação para quando uma pull request é aberta
 
+# Define as permissões necessárias para o fluxo de trabalho
 permissions:
-  pull-requests: write
+  pull-requests: write  # Permissão de escrita para pull requests
 
+# Define os jobs (tarefas) a serem executadas no fluxo de trabalho
 jobs:
   uneditable:
-    uses: laravel/.github/.github/workflows/pull-requests.yml@main
+    # Utiliza outro workflow específico, que é configurado em outro arquivo
+    uses: laravel/.github/.github/workflows/pull-requests.yml@main  # Referência para workflow em um repositório externo

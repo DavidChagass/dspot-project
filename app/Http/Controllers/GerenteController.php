@@ -11,28 +11,35 @@ use Illuminate\Http\Request;
 
 class GerenteController extends Controller
 {
-    //
-
+    // Variável para armazenar o estoque_id
     public $estoque_id;
 
+    // Método para exibir o formulário de criação de um novo produto
     public function create()
     {
+        // Obtém o usuário autenticado
         $user = auth()->guard()->user();
+        // Obtém a empresa associada ao usuário
         $empresa = $user->empresa_id;
+        // Obtém os estoques associados à empresa
         $estoques = estoque::where('empresa_id', $empresa)->get();
 
+        // Exibe o formulário de criação de produto com os estoques disponíveis
         return view('livewire.pages.gerentes.gerente-produto-create', compact('estoques'));
-        //return view('produto-create');
     }
 
+    // Método para armazenar um novo produto no banco de dados
     public function store(Request $request)
     {
+        // Obtém o usuário autenticado
         $user = auth()->guard()->user();
+        // Obtém a empresa associada ao usuário
         $empresa = $user->empresa_id;
+        // Obtém o primeiro estoque da empresa
         $estoque = estoque::where('empresa_id', $empresa)->first();
         $estoque_id = $estoque->id;
-        //   dd($estoque_id);
 
+        // Validação dos dados recebidos no formulário
         $request->validate([
             'produto' => 'required',
             'detalhes' => 'required',
@@ -46,6 +53,7 @@ class GerenteController extends Controller
             'estoque_id' => 'required',
         ]);
 
+        // Criação do novo produto
         $produto = new produtos();
         $produto->produto = $request->input('produto');
         $produto->detalhes = $request->input('detalhes');
@@ -56,55 +64,62 @@ class GerenteController extends Controller
         $produto->precoVenda = $request->input('precoVenda');
         $produto->dataValidade = $request->input('dataValidade');
         $produto->fornecedor = $request->input('fornecedor');
-        $produto->estoque_id = $request->input('estoque_id'); //inserindo o id do estoque
+        $produto->estoque_id = $request->input('estoque_id'); // Atribui o ID do estoque
         $produto->save();
 
-        // Redirecione para a página de produtos
+        // Exibe uma mensagem de sucesso e redireciona para o dashboard do gerente
         session()->flash('message', 'Produto inserido com sucesso!');
         return redirect()->route('gerente-dashboard');
     }
 
-
+    // Método para exibir os detalhes de um produto específico
     public function show($id)
     {
+        // Busca o produto pelo ID
         $produto = produtos::find($id);
 
+        // Verifica se o produto não foi encontrado e redireciona com uma mensagem de erro
         if (!$produto) {
             return redirect()->route('gerente-dashboard')
                 ->with('error', 'Produto não encontrado.');
         }
 
+        // Exibe os detalhes do produto
         return view('livewire.pages.gerentes.gerente-detalhes-produto', compact('produto'));
-
     }
 
+    // Método para exibir o formulário de edição de um produto
     public function edit($id)
     {
+        // Busca o produto pelo ID
         $produto = produtos::find($id);
-        //dd($produto);
+        // Exibe o formulário de edição com os dados do produto
         return view('livewire.pages.gerentes.gerente-produto-edit', compact('produto'));
     }
 
-
+    // Método para atualizar os dados de um produto
     public function update(Request $request, $id)
     {
+        // Busca o produto pelo ID
         $produtos = produtos::find($id);
+        // Valida os dados recebidos no formulário, garantindo que a quantidade atual não ultrapasse a total
         $request->validate([
-            'quantidadeAtual' => 'required|numeric|lte:quantidadeTotal',
+            'quantidadeAtual' => 'required|numeric|lte:quantidadeTotal',  // Validação de quantidade
         ]);
+        // Atualiza os dados do produto com as informações do formulário
         $produtos->update($request->all());
+        // Redireciona para o dashboard do gerente
         return redirect()->route('gerente-dashboard');
     }
 
-
+    // Método para deletar um produto
     public function destroy($id)
     {
-        // dd($id);
+        // Busca o produto pelo ID
         $produtos = produtos::find($id);
+        // Deleta o produto
         $produtos->delete();
+        // Redireciona para o dashboard do gerente
         return redirect()->route('gerente-dashboard');
     }
-
-
-
 }

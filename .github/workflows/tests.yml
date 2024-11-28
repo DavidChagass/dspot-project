@@ -1,47 +1,57 @@
+# Define o nome do fluxo de trabalho
 name: Tests
 
+# Define os eventos que acionam o fluxo de trabalho
 on:
   push:
     branches:
-      - master
-      - '*.x'
-  pull_request:
+      - master  # Ação quando há um push para o branch master
+      - '*.x'  # Ação quando há um push para qualquer branch com sufixo .x
+  pull_request:  # Aciona o workflow em pull requests
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # Ação programada para rodar todos os dias à meia-noite (horário UTC)
 
+# Define as permissões necessárias para o fluxo de trabalho
 permissions:
-  contents: read
+  contents: read  # Permissão de leitura dos conteúdos do repositório
 
+# Define os jobs (tarefas) a serem executadas no fluxo de trabalho
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Define o ambiente de execução como o Ubuntu mais recente
 
     strategy:
-      fail-fast: true
+      fail-fast: true  # Interrompe os testes ao encontrar o primeiro erro
       matrix:
-        php: [8.2, 8.3]
+        php: [8.2, 8.3]  # Executa os testes em duas versões do PHP (8.2 e 8.3)
 
-    name: PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php }}  # Nome do job, inclui a versão do PHP atual da matriz
 
     steps:
+      # Etapa para fazer checkout do código do repositório
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Etapa para configurar o PHP com a versão especificada
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
-          coverage: none
+          php-version: ${{ matrix.php }}  # Usa a versão do PHP da matriz
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite  # Extensões PHP necessárias
+          coverage: none  # Desativa a cobertura de código
 
+      # Etapa para instalar as dependências do Composer
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
+      # Etapa para copiar o arquivo de ambiente de exemplo
       - name: Copy environment file
         run: cp .env.example .env
 
+      # Etapa para gerar a chave de aplicação do Laravel
       - name: Generate app key
         run: php artisan key:generate
 
+      # Etapa para executar os testes com PHPUnit
       - name: Execute tests
         run: vendor/bin/phpunit

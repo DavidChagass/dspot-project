@@ -1,13 +1,20 @@
+# Define o nome do fluxo de trabalho
 name: update changelog
 
+# Define o evento que aciona o fluxo de trabalho (neste caso, quando uma release é publicada)
 on:
   release:
-    types: [released]
+    types: [released]  # Ação para quando uma release for criada (tipo 'released')
 
-permissions: {}
+# Define as permissões necessárias para o fluxo de trabalho
+permissions: {}  # Sem permissões específicas definidas globalmente
 
+# Define os jobs (tarefas) a serem executadas no fluxo de trabalho
 jobs:
   update:
+    # Define permissões específicas para o job de atualização do changelog
     permissions:
-      contents: write
-    uses: laravel/.github/.github/workflows/update-changelog.yml@main
+      contents: write  # Permissão de escrita para o conteúdo do repositório
+
+    # Utiliza outro workflow específico, configurado em outro arquivo
+    uses: laravel/.github/.github/workflows/update-changelog.yml@main  # Referência para workflow em um repositório externo
