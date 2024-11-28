@@ -30,7 +30,7 @@
                                 <p class="text-white">Bem-vindo!<br><strong class="capitalize">{{ $user->nome }}</strong></p>
                             </div>
                             <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Início</a>
-                            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Sair</a>
+                            <a href="#" id="dynamicButton" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Sair</a>
                         </div>
                     </div>
                 </div>
