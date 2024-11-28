@@ -1,12 +1,17 @@
+# Define o nome do fluxo de trabalho
 name: issues
 
+# Define o evento que aciona o fluxo de trabalho (neste caso, quando uma etiqueta é adicionada a uma issue)
 on:
   issues:
-    types: [labeled]
+    types: [labeled]  # Ação para quando a issue for etiquetada
 
+# Define as permissões necessárias para o fluxo de trabalho
 permissions:
-  issues: write
+  issues: write  # Permissão de escrita para as issues
 
+# Define os jobs (tarefas) a serem executadas no fluxo de trabalho
 jobs:
   help-wanted:
-    uses: laravel/.github/.github/workflows/issues.yml@main
+    # Utiliza outro workflow específico, que é configurado em outro arquivo
+    uses: laravel/.github/.github/workflows/issues.yml@main  # Referência para workflow em um repositório externo
