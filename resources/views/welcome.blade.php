@@ -127,7 +127,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white shadow-md rounded-lg p-4">
                         <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
-                            <img class="w-full h-full object-cover" src="{{ asset('/src/FernandoAlvarez.jpg') }}" alt="Membro 3">
+                            <img class="w-full h-full object-cover" src="{{ asset('/src/CaioEduardo.jpg') }}" alt="Membro 3">
                         </div>
                         <h2 class="text-xl font-semibold text-center mt-4">Caio Eduardo</h2>
                         <p class="text-gray-600 text-center">Design Gráfico</p>
@@ -136,7 +136,7 @@
 
                     <div class="bg-white shadow-md rounded-lg p-4">
                         <div class="w-24 h-24 overflow-hidden rounded-full mx-auto">
-                            <img class="w-full h-full object-cover" src="{{ asset('/src/FernandoAlvarez.jpg') }}" alt="Membro 3">
+                            <img class="w-full h-full object-cover" src="{{ asset('/src/RaviAmaral.jpg') }}" alt="Membro 3">
                         </div>
                         <h2 class="text-xl font-semibold text-center mt-4">Ravi Amaral</h2>
                         <p class="text-gray-600 text-center">Tester - Analista</p>
