@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductCreated;
+use App\Events\ProductDeleted;
 use App\Http\Controllers\Controller;
 use App\Models\empresas;
 use App\Models\estoque;
@@ -69,6 +71,9 @@ class EmpresaController extends Controller
             // Salva o produto no banco de dados
             $produto->save();
 
+            event(new ProductCreated($produto, auth()->guard()->user()));
+
+
             // Exibe uma mensagem de sucesso e redireciona para o dashboard da empresa
             session()->flash('message', 'Produto criado com sucesso!');
             return redirect()->route('empresa-dashboard');
@@ -118,6 +123,8 @@ class EmpresaController extends Controller
         $produto = produtos::find($id);
         // Exclui o produto do banco de dados
         $produto->delete();
+
+        event(new ProductDeleted($produto, auth()->guard()->user()));
         // Redireciona para o dashboard da empresa
         return redirect()->route('empresa-dashboard');
     }
