@@ -66,10 +66,10 @@
     </nav>
 
     <!-- Contêiner principal da página -->
-    <div class="">
-        <div class="">
+    <div>
+        <div>
             <!-- Área principal onde o conteúdo dinâmico será inserido via Livewire -->
-            <main class="">
+            <main>
                 {{ $slot }}
             </main>
         </div>
