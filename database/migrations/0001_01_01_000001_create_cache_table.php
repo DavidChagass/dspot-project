@@ -7,29 +7,35 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa as migrações.
+     *
+     * Este método cria as tabelas necessárias no banco de dados para o cache e controle de bloqueios.
      */
     public function up(): void
     {
+        // Criando a tabela 'cache' para armazenar dados de cache
         Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->mediumText('value');
-            $table->integer('expiration');
+            $table->string('key')->primary();  // A chave de cache é a chave primária
+            $table->mediumText('value');  // O valor associado à chave de cache
+            $table->integer('expiration');  // O tempo de expiração do cache (em segundos)
         });
 
+        // Criando a tabela 'cache_locks' para gerenciar bloqueios de cache
         Schema::create('cache_locks', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->string('owner');
-            $table->integer('expiration');
+            $table->string('key')->primary();  // A chave de bloqueio é a chave primária
+            $table->string('owner');  // O proprietário do bloqueio (geralmente, a identificação do processo que adquiriu o bloqueio)
+            $table->integer('expiration');  // O tempo de expiração do bloqueio (em segundos)
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte as migrações.
+     *
+     * Este método remove as tabelas criadas caso a migração seja revertida.
      */
     public function down(): void
     {
-        Schema::dropIfExists('cache');
-        Schema::dropIfExists('cache_locks');
+        Schema::dropIfExists('cache');  // Remove a tabela 'cache'
+        Schema::dropIfExists('cache_locks');  // Remove a tabela 'cache_locks'
     }
 };
