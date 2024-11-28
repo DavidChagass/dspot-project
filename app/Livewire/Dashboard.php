@@ -2,6 +2,7 @@
 
 namespace App\Livewire;  // Define o namespace para o componente Livewire do Dashboard
 
+use App\Models\auditoria;
 use App\Models\Empresas;  // Importa o modelo de Empresas
 use App\Models\Estoque;  // Importa o modelo de Estoque
 use Illuminate\Http\Request;  // Importa a classe Request para manipulação de requisições HTTP (não está sendo utilizada diretamente)
@@ -9,6 +10,7 @@ use Livewire\Component;  // Importa a classe Component do Livewire
 
 class Dashboard extends Component
 {
+
     public $estoques = [];  // Variável para armazenar os estoques
     public $view;  // Variável para armazenar o nome da view a ser renderizada
     public $role;  // Variável para armazenar o papel (role) do usuário
@@ -18,7 +20,11 @@ class Dashboard extends Component
     {
         $this->determineRoleAndView();  // Determina o papel do usuário e a view a ser exibida
         $this->mostrarProdutos();  // Exibe os produtos relacionados ao usuário logado
+        $this->buscarEventos();      // Busca os eventos relacionados ao usuário logado
+
     }
+
+
 
     /**
      * Determina o papel do usuário (role) e a view que será renderizada.
@@ -87,15 +93,16 @@ class Dashboard extends Component
         if ($this->role === 'empresa') {
             return view('livewire.pages.empresas.dashboardEmpresa', [
                 'estoques' => $this->estoques,
+
             ])->layout('layouts.dashboard', [
-                'title' => $this->getDashboardTitle(),
-            ]);
+                        'title' => $this->getDashboardTitle(),
+                    ]);
         } else {
             return view($this->view, [
                 'estoques' => $this->estoques,
             ])->layout('layouts.dashboard', [
-                'title' => $this->getDashboardTitle(),
-            ]);
+                        'title' => $this->getDashboardTitle(),
+                    ]);
         }
     }
 

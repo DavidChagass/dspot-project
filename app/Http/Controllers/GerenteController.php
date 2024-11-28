@@ -51,7 +51,7 @@ class GerenteController extends Controller
             'quantidadeTotal' => 'required|numeric',
             'precoCompra' => 'required|numeric',
             'precoVenda' => 'required|numeric',
-            'dataValidade' => 'required|date',
+            'dataValidade' => '',
             'fornecedor' => 'required',
             'estoque_id' => 'required',
         ]);
