@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductCreated;
+use App\Events\ProductDeleted;
+use App\Events\ProductUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\estoque;
 use App\Models\gerentes;
@@ -67,6 +70,8 @@ class GerenteController extends Controller
         $produto->estoque_id = $request->input('estoque_id'); // Atribui o ID do estoque
         $produto->save();
 
+        //chama o evento para registrar a criação de um novo produto
+        event(new ProductCreated($produto, auth()->guard()->user()));
         // Exibe uma mensagem de sucesso e redireciona para o dashboard do gerente
         session()->flash('message', 'Produto inserido com sucesso!');
         return redirect()->route('gerente-dashboard');
@@ -103,11 +108,23 @@ class GerenteController extends Controller
         // Busca o produto pelo ID
         $produtos = produtos::find($id);
         // Valida os dados recebidos no formulário, garantindo que a quantidade atual não ultrapasse a total
+        $original = $produtos->getOriginal();
+        $descricao = [];
+
         $request->validate([
             'quantidadeAtual' => 'required|numeric|lte:quantidadeTotal',  // Validação de quantidade
         ]);
         // Atualiza os dados do produto com as informações do formulário
         $produtos->update($request->all());
+
+        //registra a alteração e envia o evento para a tabela de auditoria
+        foreach ($produtos->getAttributes() as $atributo => $valor) {
+            if ($original[$atributo] != $valor && $atributo != 'updated_at') {
+                $descricao[] = $atributo . ' alterado de ' . $original[$atributo] . ' para ' . $valor;
+            }
+        }
+        event(new ProductUpdated($produtos, auth()->guard()->user(), implode(', ', $descricao), $produtos->produto));
+
         // Redireciona para o dashboard do gerente
         return redirect()->route('gerente-dashboard');
     }
@@ -119,6 +136,9 @@ class GerenteController extends Controller
         $produtos = produtos::find($id);
         // Deleta o produto
         $produtos->delete();
+
+        event(new ProductDeleted($produtos, auth()->guard()->user()));
+
         // Redireciona para o dashboard do gerente
         return redirect()->route('gerente-dashboard');
     }
