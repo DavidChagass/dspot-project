@@ -1,13 +1,16 @@
+/* Definindo o estilo do corpo da página */
 body {
-    background-color: #FFFF;
+    background-color: #FFFF;  /* Cor de fundo do corpo da página (branco) */
 }
 
+/* Estilo para o contêiner do formulário de registro */
 .form-wrapper-register {
-    min-width: 220px;
-    width: 55%;
+    min-width: 220px;  /* Largura mínima do formulário de registro */
+    width: 55%;  /* Largura do formulário de registro, 55% do tamanho do contêiner pai */
 }
 
+/* Estilo para o contêiner do formulário de login */
 .form-wrapper-login {
-    min-width: 220px;
-    width: 25%;
+    min-width: 220px;  /* Largura mínima do formulário de login */
+    width: 25%;  /* Largura do formulário de login, 25% do tamanho do contêiner pai */
 }

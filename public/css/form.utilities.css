@@ -1,16 +1,16 @@
-/*Password buttom*/
-
+/* Estilo para o botão de mostrar/ocultar senha (ícone de olho) */
 .toggle-button {
-	display: flex;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	left: unset;
-	right: 12px;
-	cursor: pointer;
+    display: flex;  /* Define o botão como um elemento flexível para alinhar seus filhos (como o ícone) */
+    position: absolute;  /* Define o botão como posição absoluta dentro do contêiner pai */
+    top: 50%;  /* Posiciona o botão a 50% do topo do contêiner pai, centralizando verticalmente */
+    transform: translateY(-50%);  /* Ajusta o botão para centralizar verticalmente, deslocando-o para cima por 50% da sua altura */
+    left: unset;  /* Remove qualquer valor de posição à esquerda */
+    right: 12px;  /* Posiciona o botão a 12 pixels da borda direita do contêiner pai */
+    cursor: pointer;  /* Altera o cursor para uma mão (indicando que o elemento é clicável) */
 }
 
+/* Estilo para o ícone do olho */
 .eye-icon {
-	width: 20px;
-	height: 20px;
+    width: 20px;  /* Define a largura do ícone do olho como 20 pixels */
+    height: 20px;  /* Define a altura do ícone do olho como 20 pixels */
 }
