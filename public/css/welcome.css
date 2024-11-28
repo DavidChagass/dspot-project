@@ -1,25 +1,22 @@
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0047ab;
-    color: white;
-    text-align: center;
+#typewriter {
+
+    border-right: 2px solid #4CAF50; /* Cursor */
+
+    white-space: nowrap; /* Impede que o texto quebre a linha */
+
+    overflow: hidden; /* Oculta o texto que não cabe */
+
+    animation: blink 0.7s step-end infinite; /* Animação do cursor */
+
 }
 
-.content-section {
-    
-    max-width: 800px;
-    padding: 20px;
-}
 
-.logo-section {
-    max-width: 150px;
-    margin-bottom: 20px;
-}
+@keyframes blink {
 
-.slogan-section {
-    font-size: 2em;
-    font-weight: bold;
+    50% {
+
+        border-color: transparent; /* Faz o cursor piscar */
+
+    }
+
 }
