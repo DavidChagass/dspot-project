@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ProductCreated;
 use App\Events\ProductDeleted;
+use App\Events\ProductUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\empresas;
 use App\Models\estoque;
@@ -37,7 +38,6 @@ class EmpresaController extends Controller
     {
         // Recupera o ID da empresa associada ao usuário autenticado
         $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
-
         // Se o usuário não possui uma empresa, redireciona para a página de login
         if (!$empresa_id) {
             return redirect()->route('login');
@@ -51,7 +51,7 @@ class EmpresaController extends Controller
                 'quantidadeTotal' => 'required|numeric',
                 'precoCompra' => 'required|numeric',
                 'precoVenda' => 'required|numeric',
-                'dataValidade' => 'required|date',
+                'dataValidade' => '',
                 'fornecedor' => 'required',
                 'estoque_id' => 'required',
             ]);
@@ -110,8 +110,21 @@ class EmpresaController extends Controller
     {
         // Busca o produto pelo ID
         $produto = produtos::find($id);
+
+        $original = $produto->getOriginal();
+        $descricao = [];
         // Atualiza os dados do produto com os dados do formulário
         $produto->update($request->all());
+
+        //registra a alteração e envia o evento para a tabela de auditoria
+        foreach ($produto->getAttributes() as $atributo => $valor) {
+            if ($original[$atributo] != $valor && $atributo != 'updated_at') {
+                $descricao[] = $atributo . ' alterado de ' . $original[$atributo] . ' para ' . $valor;
+            }
+        }
+
+        event(new ProductUpdated($produto, auth()->guard()->user(), implode(', ', $descricao), $produto->produto));
+
         // Redireciona para o dashboard da empresa
         return redirect()->route('empresa-dashboard');
     }
