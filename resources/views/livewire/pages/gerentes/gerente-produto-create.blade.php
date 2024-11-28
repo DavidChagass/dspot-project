@@ -64,7 +64,7 @@
 
         <div>
             <label for="dataValidade">Data de Validade</label>
-            <input type="date" name="dataValidade" wire:model="dataValidade" required>
+            <input type="date" name="dataValidade" wire:model="dataValidade">
             @error('dataValidade')
                 <span class="error">{{ $message }}</span>
             @enderror
