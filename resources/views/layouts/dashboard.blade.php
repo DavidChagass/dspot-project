@@ -12,6 +12,10 @@
     
     <!-- Incluindo o CSS do Bootstrap (framework popular para responsividade e componentes) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Incluindo ícones do font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Incluindo o JS do Bootstrap (necessário para interatividade como dropdowns e modais) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -62,10 +66,10 @@
     </nav>
 
     <!-- Contêiner principal da página -->
-    <div class="container container-fluid">
-        <div class="flex justify-center min-h-screen">
+    <div class="">
+        <div class="">
             <!-- Área principal onde o conteúdo dinâmico será inserido via Livewire -->
-            <main class="container mx-auto p-1.5">
+            <main class="">
                 {{ $slot }}
             </main>
         </div>

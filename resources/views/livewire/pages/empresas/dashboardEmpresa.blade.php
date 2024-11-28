@@ -1,4 +1,4 @@
-<div class="container mx-auto p-1.5">
+<div>
     <!-- Cabeçalho com navegação -->
     <header class="bg-slate-200 flex rounded border-2 border-solid border-gray-300">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-1 lg:px-8" aria-label="Global">
@@ -183,32 +183,361 @@
             </div>
         </div>
     </header>
-    <h2>Bem-vindo à Página Inicial</h2>
-    <div>
-        <a href="{{ route('gerente-register') }}">registrar gerente</a>
-        <a href="{{route('empresa.produtos.create')}}">criar produto</a>
-        <a href="{{ route('empresa.estoque.create') }}">criar novo estoque</a>
-    </div>
-    <p>Este é o conteúdo da home.</p>
-    @foreach ($estoques as $es)
-    <table>
-        <h1>nome do estoque: {{ $es->nome }}</h1>
-        <a href="{{ route('empresa.estoque.edit', $es->id) }}">editar ou apagar o estoque</a>
-        <thead>
-            <th>Produto</th>
-            <th>quant atual</th>
-            <th>quant total</th>
-        </thead>
-        <tbody>
-            @foreach ($es->produtos as $prod)
-            <tr>
-                <td>{{ $prod->produto }}</td>
-                <td>{{ $prod->quantidadeAtual }}</td>
-                <td>{{ $prod->quantidadeTotal }}</td>
-                <td><a href="{{ route('empresa.produtos.show', $prod->id) }}">mostrar mais detalhes</a></td>
-            </tr>
+    <div class="p-4">
+        <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-blue-600">
+                        <i class="fas fa-tasks">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            211
+                        </div>
+                        <div>
+                            Total No.Of Plans
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-blue-600">
+                        <i class="fas fa-spinner">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            31
+                        </div>
+                        <div>
+                            Plans in progress
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-blue-600">
+                        <i class="fas fa-check-circle">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            246
+                        </div>
+                        <div>
+                            Plans Completed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-center font-bold mb-4">
+                Funcionários
+            </h2>
+            <table class="min-w-full bg-white table-auto">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Nome
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Cargo
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Email
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Ações
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            <a href="{{ route('gerente-register') }}"><i class="fa-regular fa-plus"></i> registrar gerente</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            João Silva
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Gerente
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Vendas
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            joao.silva@empresa.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Maria Oliveira
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Funcionário
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Vendas
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            maria.oliveira@empresa.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Carlos Pereira
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Gerente
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            TI
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            carlos.pereira@empresa.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Ana Costa
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Funcionário
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            TI
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            ana.costa@empresa.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Pedro Santos
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Gerente
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            RH
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            pedro.santos@empresa.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Luiza Almeida
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            Funcionário
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            RH
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            luiza.almeida@empresa.com
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-center font-bold mb-4">
+                Estoques
+            </h2>
+            <a class="mb-2" href="{{ route('empresa.estoque.create') }}"><i class="fa-regular fa-plus"></i> criar novo estoque</a>
+            @foreach ($estoques as $es)
+            <table class="min-w-full bg-white table-auto shadow mb-4">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-sm  leading-4 text-gray-600 uppercase tracking-wider">{{ $es->nome }}</th>
+                        <th colspan="1" class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-sm  leading-4 text-gray-600 uppercase tracking-wider"><a href="{{ route('empresa.estoque.edit', $es->id) }}"><i class="fa-solid fa-pen-to-square"></i> Editar Estoque</a></th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Produto
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Quantidade Atual
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Quantidade Total
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            Ações
+                        </th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                            <a href="{{route('empresa.produtos.create')}}"><i class="fa-regular fa-plus"></i> Criar produto</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($es->produtos as $prod)
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            {{ $prod->produto }}
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            {{ $prod->quantidadeAtual }}
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            {{ $prod->quantidadeTotal }}
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            <a href="{{ route('empresa.produtos.show', $prod->id) }}">mostrar mais detalhes</a>
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200">
+                            {{ $prod->updated_at }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             @endforeach
-        </tbody>
-    </table>
-    @endforeach
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-green-600">
+                        <i class="fas fa-tasks">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            189
+                        </div>
+                        <div>
+                            Total No.Of Orders
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-green-600">
+                        <i class="fas fa-spinner">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            16
+                        </div>
+                        <div>
+                            Orders In-Progress
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl text-green-600">
+                        <i class="fas fa-check-circle">
+                        </i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold">
+                            158
+                        </div>
+                        <div>
+                            Orders Completed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Procurement Status (Overall)
+                </h2>
+                <img alt="Funnel chart showing procurement status with sections for Planned, Approved, In Progress, and Finished" height="200" src="https://storage.googleapis.com/a1aa/image/oye9swgMh5TQOKlbra8bG1tgLIXP9PgqRbeuNef6o8mfVyseE.jpg" width="300" />
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Money Spent For The Orders
+                </h2>
+                <img alt="Bar chart showing money spent for orders with Amount Paid and Amount To Pay" height="200" src="https://storage.googleapis.com/a1aa/image/k1msJZZggPK3B1VfKAf36pQeZu7XqxjHbANextdVHSf2VyseE.jpg" width="300" />
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Purchase Order (Overall)
+                </h2>
+                <img alt="Funnel chart showing purchase order status with sections for Pending, Confirmed, and Finished" height="200" src="https://storage.googleapis.com/a1aa/image/gTGOtz6PYNLTPVc2CkFs5eQks1EAVc15QYiTFHVFz3LVJz6JA.jpg" width="300" />
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Top Vendors By Orders
+                </h2>
+                <img alt="Pie chart showing top vendors by orders with categories for Caso, CAT, Telemark, and Vens &amp; co" height="200" src="https://storage.googleapis.com/a1aa/image/gECCAwe2y0V2SCltEPmlJ3basls99ZHovnL1sMEWdXesSm1TA.jpg" width="300" />
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Vendors
+                </h2>
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        No.Of Vendors
+                    </div>
+                    <div class="text-2xl font-bold">
+                        <i class="fas fa-users">
+                        </i>
+                        13
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="bg-blue-500 text-white p-2 rounded flex justify-between items-center">
+                        <div>
+                            5
+                        </div>
+                        <div>
+                            Vendors In Contract
+                        </div>
+                    </div>
+                    <div class="bg-yellow-500 text-white p-2 rounded flex justify-between items-center">
+                        <div>
+                            4
+                        </div>
+                        <div>
+                            Top Rated Vendors
+                        </div>
+                    </div>
+                    <div class="bg-gray-500 text-white p-2 rounded flex justify-between items-center">
+                        <div>
+                            7
+                        </div>
+                        <div>
+                            Neutral Vendors
+                        </div>
+                    </div>
+                    <div class="bg-brown-500 text-white p-2 rounded flex justify-between items-center">
+                        <div>
+                            2
+                        </div>
+                        <div>
+                            Low Rated Vendors
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="text-center font-bold mb-4">
+                    Top Vendors By Payments
+                </h2>
+                <img alt="Pie chart showing top vendors by payments with categories for Caso, CAT, Telemark, and Vens &amp; co" height="200" src="https://storage.googleapis.com/a1aa/image/JGn1hm55QbKEEhrwUUEMRGMvMynsvRnNuUT5HPFcdo2qkZ9E.jpg" width="300" />
+            </div>
+        </div>
+        </main>
+    </div>
+
 </div>
