@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->integer('quantidadeTotal');  // Adiciona uma coluna 'quantidadeTotal' para armazenar a quantidade total do produto (incluindo as entradas e saídas)
             $table->double('precoCompra');  // Adiciona uma coluna 'precoCompra' para armazenar o preço de compra do produto
             $table->double('precoVenda');  // Adiciona uma coluna 'precoVenda' para armazenar o preço de venda do produto
-            $table->dateTime('dataValidade');  // Adiciona uma coluna 'dataValidade' para armazenar a data de validade do produto
+            $table->dateTime('dataValidade')->nullable();  // Adiciona uma coluna 'dataValidade' para armazenar a data de validade do produto
             $table->string('fornecedor');  // Adiciona uma coluna 'fornecedor' para armazenar o nome do fornecedor do produto
             $table->timestamps();  // Adiciona as colunas 'created_at' e 'updated_at' para controle de data e hora
         });

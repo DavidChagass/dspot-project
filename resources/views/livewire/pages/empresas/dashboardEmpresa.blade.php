@@ -401,6 +401,7 @@
                 </tbody>
             </table>
             @endforeach
+<<<<<<< HEAD
         </div>
         <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="bg-white p-4 rounded shadow">
