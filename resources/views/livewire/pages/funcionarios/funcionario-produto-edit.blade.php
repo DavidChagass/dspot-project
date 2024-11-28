@@ -12,7 +12,7 @@
             @enderror
 
             <label for="quantidadeTotal">Quantidade Total</label>
-            <input type="number" name="quantidadeTotal" wire:model="quantidadeTotal" value="{{ $produto->quantidadeTotal }}" required>
+            <input type="number" name="quantidadeTotal" wire:model="quantidadeTotal" value="{{ $produto->quantidadeTotal }}" disabled>
             @error('quantidadeTotal')
                 <span class="error">{{ $message }}</span>
             @enderror
