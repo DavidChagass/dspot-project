@@ -193,10 +193,10 @@
                     </div>
                     <div>
                         <div class="text-2xl font-bold">
-                            211
+                            {{ $funcionariosCount }}
                         </div>
                         <div>
-                            Total No.Of Plans
+                            Total Funcionários
                         </div>
                     </div>
                 </div>
@@ -209,10 +209,10 @@
                     </div>
                     <div>
                         <div class="text-2xl font-bold">
-                            31
+                            {{ $estoquesCount }}
                         </div>
                         <div>
-                            Plans in progress
+                            Estoques Cadastrados
                         </div>
                     </div>
                 </div>
@@ -225,10 +225,10 @@
                     </div>
                     <div>
                         <div class="text-2xl font-bold">
-                            246
+                            {{ $produtosCount }}
                         </div>
                         <div>
-                            Plans Completed
+                            Produtos Cadastrados
                         </div>
                     </div>
                 </div>
@@ -259,90 +259,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($funcionarios as $funcionario)
                     <tr>
                         <td class="py-2 px-4 border-b border-gray-200">
-                            João Silva
+                            {{ $funcionario->nome }}
                         </td>
                         <td class="py-2 px-4 border-b border-gray-200">
-                            Gerente
+                            {{ $funcionario->role }}
                         </td>
                         <td class="py-2 px-4 border-b border-gray-200">
-                            Vendas
+                            {{ $funcionario->email }}
                         </td>
                         <td class="py-2 px-4 border-b border-gray-200">
                             joao.silva@empresa.com
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Maria Oliveira
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Funcionário
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Vendas
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            maria.oliveira@empresa.com
+                        <td>
+                            {{ $funcionario->updated_at }}
                         </td>
                     </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Carlos Pereira
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Gerente
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            TI
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            carlos.pereira@empresa.com
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Ana Costa
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Funcionário
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            TI
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            ana.costa@empresa.com
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Pedro Santos
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Gerente
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            RH
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            pedro.santos@empresa.com
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Luiza Almeida
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            Funcionário
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            RH
-                        </td>
-                        <td class="py-2 px-4 border-b border-gray-200">
-                            luiza.almeida@empresa.com
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -401,7 +336,6 @@
                 </tbody>
             </table>
             @endforeach
-<<<<<<< HEAD
         </div>
         <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="bg-white p-4 rounded shadow">
@@ -444,98 +378,13 @@
                     </div>
                     <div>
                         <div class="text-2xl font-bold">
-                            158
+                            {{ $quantidadeTotalAtual }}
                         </div>
                         <div>
-                            Orders Completed
+                            Quantidade total de produtos
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Procurement Status (Overall)
-                </h2>
-                <img alt="Funnel chart showing procurement status with sections for Planned, Approved, In Progress, and Finished" height="200" src="https://storage.googleapis.com/a1aa/image/oye9swgMh5TQOKlbra8bG1tgLIXP9PgqRbeuNef6o8mfVyseE.jpg" width="300" />
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Money Spent For The Orders
-                </h2>
-                <img alt="Bar chart showing money spent for orders with Amount Paid and Amount To Pay" height="200" src="https://storage.googleapis.com/a1aa/image/k1msJZZggPK3B1VfKAf36pQeZu7XqxjHbANextdVHSf2VyseE.jpg" width="300" />
-            </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Purchase Order (Overall)
-                </h2>
-                <img alt="Funnel chart showing purchase order status with sections for Pending, Confirmed, and Finished" height="200" src="https://storage.googleapis.com/a1aa/image/gTGOtz6PYNLTPVc2CkFs5eQks1EAVc15QYiTFHVFz3LVJz6JA.jpg" width="300" />
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Top Vendors By Orders
-                </h2>
-                <img alt="Pie chart showing top vendors by orders with categories for Caso, CAT, Telemark, and Vens &amp; co" height="200" src="https://storage.googleapis.com/a1aa/image/gECCAwe2y0V2SCltEPmlJ3basls99ZHovnL1sMEWdXesSm1TA.jpg" width="300" />
-            </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Vendors
-                </h2>
-                <div class="flex justify-between items-center mb-4">
-                    <div>
-                        No.Of Vendors
-                    </div>
-                    <div class="text-2xl font-bold">
-                        <i class="fas fa-users">
-                        </i>
-                        13
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <div class="bg-blue-500 text-white p-2 rounded flex justify-between items-center">
-                        <div>
-                            5
-                        </div>
-                        <div>
-                            Vendors In Contract
-                        </div>
-                    </div>
-                    <div class="bg-yellow-500 text-white p-2 rounded flex justify-between items-center">
-                        <div>
-                            4
-                        </div>
-                        <div>
-                            Top Rated Vendors
-                        </div>
-                    </div>
-                    <div class="bg-gray-500 text-white p-2 rounded flex justify-between items-center">
-                        <div>
-                            7
-                        </div>
-                        <div>
-                            Neutral Vendors
-                        </div>
-                    </div>
-                    <div class="bg-brown-500 text-white p-2 rounded flex justify-between items-center">
-                        <div>
-                            2
-                        </div>
-                        <div>
-                            Low Rated Vendors
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-                <h2 class="text-center font-bold mb-4">
-                    Top Vendors By Payments
-                </h2>
-                <img alt="Pie chart showing top vendors by payments with categories for Caso, CAT, Telemark, and Vens &amp; co" height="200" src="https://storage.googleapis.com/a1aa/image/JGn1hm55QbKEEhrwUUEMRGMvMynsvRnNuUT5HPFcdo2qkZ9E.jpg" width="300" />
             </div>
         </div>
         </main>

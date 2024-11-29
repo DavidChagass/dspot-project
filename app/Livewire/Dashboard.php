@@ -3,8 +3,11 @@
 namespace App\Livewire;  // Define o namespace para o componente Livewire do Dashboard
 
 use App\Models\auditoria;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use App\Models\Empresas;  // Importa o modelo de Empresas
 use App\Models\Estoque;  // Importa o modelo de Estoque
+use App\Models\produtos;
 use Illuminate\Http\Request;  // Importa a classe Request para manipulação de requisições HTTP (não está sendo utilizada diretamente)
 use Livewire\Component;  // Importa a classe Component do Livewire
 
@@ -12,16 +15,139 @@ class Dashboard extends Component
 {
 
     public $estoques = [];  // Variável para armazenar os estoques
+    public $funcionarios = [];  // Variável para armazenar os funcionarios
     public $view;  // Variável para armazenar o nome da view a ser renderizada
     public $role;  // Variável para armazenar o papel (role) do usuário
+    public $funcionariosCount = 0; // Propriedade para armazenar o número de funcionários
+    public $produtosCount = 0; // Propriedade para armazenar a contagem de tipos de produtos
+    public $estoquesCount = 0; // Propriedade para armazenar a contagem de estoques
+    public $quantidadeTotalAtual = 0; // Propriedade para armazenar a soma de quantidadeAtual
 
     // Método chamado ao montar o componente
     public function mount()
     {
         $this->determineRoleAndView();  // Determina o papel do usuário e a view a ser exibida
         $this->mostrarProdutos();  // Exibe os produtos relacionados ao usuário logado
-        $this->buscarEventos();      // Busca os eventos relacionados ao usuário logado
+        // $this->buscarEventos();  Busca os eventos relacionados ao usuário logado
+        $this->mostrarFuncionarios();
+        $this->funcionariosCount = $this->contarFuncionarios(); // Conta os funcionários
+        $this->estoquesCount = $this->contarEstoques(); // Inicializa a contagem de estoques
+        $this->produtosCount = $this->contarTiposDeProdutos(); // Inicializa a contagem de tipos de produtos
+        $this->quantidadeTotalAtual = $this->somarQuantidadeAtualDeProdutos(); // Soma as quantidades
+    }
 
+    /**
+     * Conta o número de tipos de produtos cadastrados na empresa do usuário.
+     */
+    public function contarTiposDeProdutos()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Determina o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+        } elseif (in_array($this->role, ['gerente', 'funcionario'])) {
+            $empresa_id = $user->empresa_id;
+        } else {
+            return 0; // Papel não correspondente
+        }
+
+        // Conta os tipos de produtos distintos associados à empresa
+        return DB::table('produtos')
+            ->join('estoque', 'produtos.estoque_id', '=', 'estoque.id') // Relaciona produtos com estoques
+            ->where('estoque.empresa_id', $empresa_id) // Filtra pelo ID da empresa
+            ->distinct('produtos.produto') // Conta tipos únicos de produtos
+            ->count('produtos.produto'); // Conta os tipos distintos
+    }
+
+    public function somarQuantidadeAtualDeProdutos()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Determina o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+        } elseif (in_array($this->role, ['gerente', 'funcionario'])) {
+            $empresa_id = $user->empresa_id;
+        } else {
+            return 0; // Retorna 0 se o papel não for válido
+        }
+
+        // Soma o campo quantidadeAtual de todos os produtos relacionados à empresa
+        return DB::table('produtos')
+            ->join('estoque', 'produtos.estoque_id', '=', 'estoque.id') // Relaciona produtos com estoques
+            ->where('estoque.empresa_id', $empresa_id) // Filtra pelo ID da empresa
+            ->sum('produtos.quantidadeAtual'); // Soma o campo quantidadeAtual
+    }
+
+    public function mostrarFuncionarios()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Define o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            // Para empresas, exibe gerentes e funcionários associados à empresa
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+            $this->funcionarios = User::where('empresa_id', $empresa_id)
+                ->whereIn('role', ['gerente', 'funcionario']) // Filtra gerentes e funcionários
+                ->get();
+        } elseif ($this->role === 'gerente') {
+            // Para gerentes, exibe apenas os funcionários associados à mesma empresa
+            $empresa_id = $user->empresa_id;
+            $this->funcionarios = User::where('empresa_id', $empresa_id)
+                ->where('role', 'funcionario') // Filtra apenas funcionários
+                ->get();
+        } else {
+            $this->funcionarios = []; // Papel não correspondente
+        }
+
+        // Exibe uma mensagem se não houver funcionários encontrados
+        if ($this->funcionarios->isEmpty()) {
+            session()->flash('message', 'Nenhum funcionário encontrado.');
+        }
+    }
+
+    public function contarEstoques()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Define o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+        } elseif (in_array($this->role, ['gerente', 'funcionario'])) {
+            $empresa_id = $user->empresa_id;
+        } else {
+            return 0; // Retorna 0 se o papel não for válido
+        }
+
+        // Conta os estoques associados à empresa
+        return Estoque::where('empresa_id', $empresa_id)->count();
+    }
+
+    /**
+     * Conta o número de funcionários e gerentes com base no papel do usuário.
+     */
+    public function contarFuncionarios()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        if ($this->role === 'empresa') {
+            // Para empresas, conta gerentes e funcionários da mesma empresa
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+            $count = User::where('empresa_id', $empresa_id)
+                ->whereIn('role', ['gerente', 'funcionario']) // Filtra gerentes e funcionários
+                ->count();
+        } elseif ($this->role === 'gerente') {
+            // Para gerentes, conta apenas os funcionários da mesma empresa
+            $empresa_id = $user->empresa_id;
+            $count = User::where('empresa_id', $empresa_id)
+                ->where('role', 'funcionario') // Filtra apenas funcionários
+                ->count();
+        } else {
+            $count = 0; // Papel não correspondente
+        }
+
+        return $count;
     }
 
 
@@ -93,16 +219,17 @@ class Dashboard extends Component
         if ($this->role === 'empresa') {
             return view('livewire.pages.empresas.dashboardEmpresa', [
                 'estoques' => $this->estoques,
-
+                'funcionarios' => $this->funcionarios, // Passa os funcionários para a view
             ])->layout('layouts.dashboard', [
-                        'title' => $this->getDashboardTitle(),
-                    ]);
+                'title' => $this->getDashboardTitle(),
+            ]);
         } else {
             return view($this->view, [
                 'estoques' => $this->estoques,
+                'funcionarios' => $this->funcionarios, // Passa os funcionários para a view
             ])->layout('layouts.dashboard', [
-                        'title' => $this->getDashboardTitle(),
-                    ]);
+                'title' => $this->getDashboardTitle(),
+            ]);
         }
     }
 
