@@ -20,7 +20,6 @@ class Dashboard extends Component
     {
         $this->determineRoleAndView();  // Determina o papel do usuário e a view a ser exibida
         $this->mostrarProdutos();  // Exibe os produtos relacionados ao usuário logado
-        $this->buscarEventos();      // Busca os eventos relacionados ao usuário logado
 
     }
 

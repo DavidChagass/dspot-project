@@ -8,6 +8,7 @@ use App\Events\ProductUpdated;
 use App\Http\Controllers\Controller;
 use App\Models\empresas;
 use App\Models\estoque;
+use App\Models\gerentes;
 use App\Models\produtos;
 use Illuminate\Http\Request;
 
@@ -208,4 +209,25 @@ class EmpresaController extends Controller
         // Redireciona para o dashboard da empresa
         return redirect()->route('empresa-dashboard');
     }
+
+    //rotas para gerente
+    public function showgerente(){
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
+        $gerente = gerentes::find($empresa_id);
+        return view('livewire.pages.empresas.empresa-gerente-show', compact('gerente'));
+    }
+
+
+
+    public function destroygerente()
+    {
+        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
+        $gerente = gerentes::find($empresa_id);
+        dd($gerente);
+        $gerente->delete();
+        return redirect()->route('empresa-dashboard');
+    }
+
+
+
 }

@@ -97,3 +97,8 @@ Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'showproduto'])-
 Route::get('/empresa/produtos/edit/{id}', [EmpresaController::class, 'editproduto'])->name('empresa.produtos.edit'); // Edita produto
 Route::put('/empresa/produtos/{id}', [EmpresaController::class, 'updateproduto'])->name('empresa.produtos.update'); // Atualiza produto
 Route::delete('/empresa/produtos/{id}', [EmpresaController::class, 'destroyproduto'])->name('empresa.produtos.destroy'); // Exclui produto
+
+//rotas de gerente para a empresa
+Route::get('/empresa/gerente/detalhes/{id}', [EmpresaController::class, 'showgerente'])->name('empresa.gerente.show'); // Exibe detalhes do gerente
+
+Route::get('/empresa/gerente/{id}', [EmpresaController::class, 'destroygerente'])->name('empresa.gerente.edit'); // Destroy gerente
