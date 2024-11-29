@@ -100,5 +100,10 @@ Route::delete('/empresa/produtos/{id}', [EmpresaController::class, 'destroyprodu
 
 //rotas de gerente para a empresa
 Route::get('/empresa/gerente/detalhes/{id}', [EmpresaController::class, 'showgerente'])->name('empresa.gerente.show'); // Exibe detalhes do gerente
+//Route::put('/empresa/gerente/{id}', [EmpresaController::class, 'updategerente'])->name('empresa.gerente.update'); // Atualiza gerente
+Route::delete('/empresa/gerente/{id}', [EmpresaController::class, 'destroygerente'])->name('empresa.gerente.destroy'); // Destroy gerente
 
-Route::get('/empresa/gerente/{id}', [EmpresaController::class, 'destroygerente'])->name('empresa.gerente.edit'); // Destroy gerente
+//rotas de funcionário para a gerente
+Route::get('/gerente/funcionario/detalhes/{id}', [GerenteController::class, 'showfuncionario'])->name('gerente.funcionario.show'); // Exibe detalhes do funcionário
+//Route::put('/gerente/funcionario/{id}', [GerenteController::class, 'updatefuncionario'])->name('gerente.funcionario.update'); // Atualiza funcionário
+Route::delete('/gerente/funcionario/{id}', [GerenteController::class, 'destroyfuncionario'])->name('gerente.funcionario.destroy'); // Destroy funcionário
