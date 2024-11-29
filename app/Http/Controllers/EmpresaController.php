@@ -221,18 +221,6 @@ class EmpresaController extends Controller
     }
 
 
-/*     public function updategerente(Request $request, $id)
-    {
-        $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
-        $gerente = User::where('empresa_id', $empresa_id)
-        ->where('id', $id)
-        ->first();
-        dd($gerente);
-        $gerente->update($request->all());
-        return redirect()->route('empresa-dashboard');
-    } */
-
-
     public function destroygerente()
     {
         $empresa_id = empresas::where('user_id', auth()->guard()->user()->id)->first()->id;
