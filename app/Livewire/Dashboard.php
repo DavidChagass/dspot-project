@@ -22,6 +22,8 @@ class Dashboard extends Component
     public $produtosCount = 0; // Propriedade para armazenar a contagem de tipos de produtos
     public $estoquesCount = 0; // Propriedade para armazenar a contagem de estoques
     public $quantidadeTotalAtual = 0; // Propriedade para armazenar a soma de quantidadeAtual
+    public $pereciveisCount = 0; // Propriedade para armazenar a soma de produtos perecíveis
+    public $lucroTotal = 0; // Propriedade para armazenar o total de lucro
 
     // Método chamado ao montar o componente
     public function mount()
@@ -34,6 +36,55 @@ class Dashboard extends Component
         $this->estoquesCount = $this->contarEstoques(); // Inicializa a contagem de estoques
         $this->produtosCount = $this->contarTiposDeProdutos(); // Inicializa a contagem de tipos de produtos
         $this->quantidadeTotalAtual = $this->somarQuantidadeAtualDeProdutos(); // Soma as quantidades
+        $this->pereciveisCount = $this->contarProdutosPereciveis(); // Conta os produtos perecíveis
+        $this->lucroTotal = $this->calcularLucroProdutos(); // Inicializa o cálculo de lucro
+    }
+
+    public function calcularLucroProdutos()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Determina o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+        } elseif (in_array($this->role, ['gerente', 'funcionario'])) {
+            $empresa_id = $user->empresa_id;
+        } else {
+            return 0; // Retorna 0 se o papel não for válido
+        }
+
+        // Soma a diferença entre precoVenda e precoCompra para todos os produtos da empresa
+        $lucroTotal = DB::table('produtos')
+            ->join('estoque', 'produtos.estoque_id', '=', 'estoque.id') // Relaciona produtos com estoques
+            ->where('estoque.empresa_id', $empresa_id) // Filtra pelo ID da empresa
+            ->sum(DB::raw('(produtos.precoVenda - produtos.precoCompra) * produtos.quantidadeAtual')); // Soma a diferença
+
+        // Formata o valor para 2 casas decimais e retorna
+        return number_format($lucroTotal, 2, '.', '');
+    }
+
+    /**
+     * Conta o número de produtos perecíveis em estoque empresa do usuário.
+     */
+    public function contarProdutosPereciveis()
+    {
+        $user = auth('web')->user(); // Obtém o usuário autenticado
+
+        // Determina o ID da empresa com base no papel do usuário
+        if ($this->role === 'empresa') {
+            $empresa_id = Empresas::where('user_id', $user->id)->first()->id;
+        } elseif (in_array($this->role, ['gerente', 'funcionario'])) {
+            $empresa_id = $user->empresa_id;
+        } else {
+            return 0; // Retorna 0 se o papel não for válido
+        }
+
+        // Soma o campo quantidadeAtual onde perecivel é 1 (sim) para produtos relacionados à empresa
+        return DB::table('produtos')
+            ->join('estoque', 'produtos.estoque_id', '=', 'estoque.id') // Relaciona produtos com estoques
+            ->where('estoque.empresa_id', $empresa_id) // Filtra pelo ID da empresa
+            ->where('produtos.perecivel', 1) // Filtra apenas produtos perecíveis
+            ->sum('produtos.quantidadeAtual'); // Soma o campo quantidadeAtual
     }
 
     /**

@@ -213,7 +213,7 @@
 
     <footer class="bg-gray-800 text-white text-center py-4">
 
-        <p>&copy; 2024 Dspot. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Dspot. Todos os direitos reservados. <span style="font-size: 5px;">e minha mulher 🎔</span></p>
 
     </footer>
     <script>
