@@ -6,6 +6,8 @@ use App\Events\ProductCreated;
 use App\Events\ProductDeleted;
 use App\Events\ProductUpdated;
 use App\Http\Controllers\Controller;
+use App\Models\empresas;
+use App\Models\User;
 use App\Models\estoque;
 use App\Models\gerentes;
 use App\Models\produtos;
@@ -142,4 +144,36 @@ class GerenteController extends Controller
         // Redireciona para o dashboard do gerente
         return redirect()->route('gerente-dashboard');
     }
+
+    //rotas para funcionario
+    public function showFuncionario()
+    {
+        // Obtém o usuário autenticado
+        $user = auth()->guard()->user();
+        // Obtém a empresa associada ao usuário
+        $empresa_id = $user->empresa_id;
+    
+        // Busca o funcionário associado ao ID da empresa
+        $funcionario = User::where('empresa_id', $empresa_id)->first();
+    
+        // Retorna a view com os dados do funcionário
+        return view('livewire.pages.gerentes.gerente-funcionario-show', compact('funcionario'));
+    }
+
+    // concertar dps
+    public function destroyfuncionario()
+    {
+        // Obtém o usuário autenticado
+        $user = auth()->guard()->user();
+        // Obtém a empresa associada ao usuário
+        $empresa_id = $user->empresa_id;
+
+        $funcionario = User::where('empresa_id', $empresa_id)->first();
+        //dd($gerente);
+        $funcionario->delete();
+
+        return redirect()->route('empresa-dashboard');
+    }
+    
+    
 }

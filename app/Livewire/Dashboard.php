@@ -135,6 +135,10 @@ class Dashboard extends Component
     {
         $user = auth('web')->user(); // Obtém o usuário autenticado
 
+        if ($this->role === 'funcionario') {
+            return; // Sai do método
+        }
+
         // Define o ID da empresa com base no papel do usuário
         if ($this->role === 'empresa') {
             // Para empresas, exibe gerentes e funcionários associados à empresa

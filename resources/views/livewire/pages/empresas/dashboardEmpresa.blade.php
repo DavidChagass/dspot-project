@@ -193,7 +193,7 @@
                                 {{ $prod->quantidadeTotal }}
                             </td>
                             <td class="py-2 px-4 border-b border-gray-200">
-                                <a href="{{ route('empresa.produtos.show', $prod->id) }}">Mostrar mais detalhes</a>
+                                <a class="btn btn-primary" href="{{ route('empresa.produtos.show', $prod->id) }}">Mostrar mais detalhes</a>
                             </td>
                             <td class="py-2 px-4 border-b border-gray-200">
                                 {{ $prod->updated_at }}
