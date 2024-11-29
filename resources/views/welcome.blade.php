@@ -60,7 +60,6 @@
                 </div>
             </div>
         </div>
-        </div>
         <div class="hidden sm:hidden" id="dropdown">
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <a href="{{route('empresa.register')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Criar Depósito</a>

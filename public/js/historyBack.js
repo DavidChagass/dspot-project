@@ -10,9 +10,10 @@ const currentUrl = window.location.href;
 
 // Obtém o botão dinâmico que será alterado conforme a URL
 const dynamicButton = document.getElementById("dynamicButton");
+const exitButton = document.getElementById("exitButton");
 
 // Verifica se a URL atual contém alguma das rotas especificadas
-if (currentUrl.includes("/empresa/register") || currentUrl.includes("/login") || currentUrl.includes("/empresa/dashboard") || currentUrl.includes("/gerente/dashboard") || currentUrl.includes("/funcionario/dashboard")) {
+if (currentUrl.includes("/login") || currentUrl.includes("/empresa/dashboard") || currentUrl.includes("/gerente/dashboard") || currentUrl.includes("/funcionario/dashboard")) {
     // Altera o atributo "href" do botão dinâmico para a rota de home
     dynamicButton.setAttribute("href", routes.home);
 }
@@ -22,7 +23,15 @@ else if (currentUrl.includes("/gerente/register")) {
 else if (currentUrl.includes("/funcionario/register")) {
     dynamicButton.classList.toggle('voltarBtn');
 }
+else if (currentUrl.includes("/empresa/register")) {
+    dynamicButton.classList.toggle('voltarBtn');
+}
 
+// Verifica se a URL atual contém alguma das rotas especificadas
+if (currentUrl.includes("/login") || currentUrl.includes("/empresa/dashboard") || currentUrl.includes("/gerente/dashboard") || currentUrl.includes("/funcionario/dashboard")) {
+    // Altera o atributo "href" do botão dinâmico para a rota de home
+    exitButton.setAttribute("href", routes.home);
+}
 // Adiciona um evento de clique ao botão de voltar (com a classe 'voltarBtn')
 // Este evento faz o navegador voltar à página anterior
 document.getElementsByClassName('voltarBtn')[0].addEventListener("click", function () {
