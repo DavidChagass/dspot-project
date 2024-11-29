@@ -35,7 +35,7 @@
 </head>
 
 <div class="flex bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl gap-20 px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl gap-20 px-6 lg:px-8 overflow-x-auto">
     <h1 class="text-3xl font-bold m-2">Informações do produto</h1>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white table-auto shadow mb-4 text-sm md:text-base">
