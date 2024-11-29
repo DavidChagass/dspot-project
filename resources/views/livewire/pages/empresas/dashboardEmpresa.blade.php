@@ -233,6 +233,9 @@
                         <td>
                             {{ $funcionario->updated_at }}
                         </td>
+                        <td>
+                            <a href="{{route('empresa.gerente.show', $funcionario->id )}}">aaaaaaaaaa</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

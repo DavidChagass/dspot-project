@@ -97,3 +97,13 @@ Route::get('/empresa/produtos/{id}', [EmpresaController::class, 'showproduto'])-
 Route::get('/empresa/produtos/edit/{id}', [EmpresaController::class, 'editproduto'])->name('empresa.produtos.edit'); // Edita produto
 Route::put('/empresa/produtos/{id}', [EmpresaController::class, 'updateproduto'])->name('empresa.produtos.update'); // Atualiza produto
 Route::delete('/empresa/produtos/{id}', [EmpresaController::class, 'destroyproduto'])->name('empresa.produtos.destroy'); // Exclui produto
+
+//rotas de gerente para a empresa
+Route::get('/empresa/gerente/detalhes/{id}', [EmpresaController::class, 'showgerente'])->name('empresa.gerente.show'); // Exibe detalhes do gerente
+//Route::put('/empresa/gerente/{id}', [EmpresaController::class, 'updategerente'])->name('empresa.gerente.update'); // Atualiza gerente
+Route::delete('/empresa/gerente/{id}', [EmpresaController::class, 'destroygerente'])->name('empresa.gerente.destroy'); // Destroy gerente
+
+//rotas de funcionário para a gerente
+Route::get('/gerente/funcionario/detalhes/{id}', [GerenteController::class, 'showfuncionario'])->name('gerente.funcionario.show'); // Exibe detalhes do funcionário
+//Route::put('/gerente/funcionario/{id}', [GerenteController::class, 'updatefuncionario'])->name('gerente.funcionario.update'); // Atualiza funcionário
+Route::delete('/gerente/funcionario/{id}', [GerenteController::class, 'destroyfuncionario'])->name('gerente.funcionario.destroy'); // Destroy funcionário
