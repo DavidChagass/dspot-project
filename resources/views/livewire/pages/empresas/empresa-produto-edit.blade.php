@@ -44,18 +44,12 @@
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="produto">Nome do Produto</label>
                     <input type="text" name="produto" wire:model="produto" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{$produto->produto }}"
                         required>
-                    @error('produto')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
 
                 <div>
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="fornecedor">Fornecedor</label>
                     <input type="text" name="fornecedor" wire:model="fornecedor" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ $produto->fornecedor }}"
                         required>
-                    @error('fornecedor')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
 
@@ -64,18 +58,12 @@
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="quantidadeAtual">Quantidade Atual</label>
                     <input type="number" name="quantidadeAtual" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" wire:model="quantidadeAtual"
                         value="{{ $produto->quantidadeAtual }}" required>
-                    @error('quantidadeAtual')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
 
                 <div>
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="quantidadeTotal">Quantidade Total</label>
                     <input type="number" name="quantidadeTotal" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" wire:model="quantidadeTotal"
                         value="{{ $produto->quantidadeTotal }}" required>
-                    @error('quantidadeTotal')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
 
@@ -84,18 +72,12 @@
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="precoCompra">Preço de Compra</label>
                     <input type="number" name="precoCompra" wire:model="precoCompra" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ $produto->precoCompra }}"
                         required>
-                    @error('precoCompra')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
 
                 <div>
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="precoVenda">Preço de Venda</label>
                     <input type="number" name="precoVenda" wire:model="precoVenda" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ $produto->precoVenda }}"
                         required>
-                    @error('precoVenda')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
 
@@ -106,26 +88,17 @@
                         <option value="0" {{ $produto->perecivel == 0 ? 'selected' : '' }}>Não</option>
                         <option value="1" {{ $produto->perecivel == 1 ? 'selected' : '' }}>Sim</option>
                     </select>
-                    @error('perecivel')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
                 <div>
                     <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="dataValidade">Data de Validade</label>
                     <input id="campo" type="date" name="dataValidade" class="bg-blue-100 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" wire:model="dataValidade"
                         value="{{ $produto->dataValidade }}">
-                    @error('dataValidade')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
                 </div>
             </div>
 
             <div>
                 <label class="block pr-2 text-sm font-medium leading-6 text-gray-900" for="detalhes">Detalhes do Produto</label>
                 <textarea name="detalhes" wire:model="detalhes" class="bg-blue-100 min-h-7 max-h-32 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>{{ $produto->detalhes }}</textarea>
-                @error('detalhes')
-                <span class="error">{{ $message }}</span>
-                @enderror
             </div>
             <div class="flex m-2 justify-center">
                 <a href="#" class="voltarBtn m-1 rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Voltar</a>
